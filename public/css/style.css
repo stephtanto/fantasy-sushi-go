@@ -1,0 +1,39 @@
+label {
+  font-weight: bold;
+}
+.nav {
+  padding: 0;
+  font-size: 0;
+  background-color: #009688;
+}
+.nav .nav-tab {
+  display: inline-block;
+  padding: 10px 10px;
+}
+.nav .nav-tab .nav-tab-block {
+  text-decoration: none;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+}
+.nav .nav-tab .nav-tab-block:hover {
+  color: black;
+}
+.nav .active {
+  background-color: gray;
+}
+.nav-content {
+  background-color: #D6D6D6;
+  padding: 1em;
+}
+.heading-with-btn {
+  display: inline-block;
+}
+.table-simple tbody tr:nthchild(odd) {
+  background-color: orange;
+}
+.table-simple tbody tr:nthchild(even) {
+  background-color: gray;
+}
