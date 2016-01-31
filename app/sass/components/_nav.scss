@@ -1,0 +1,36 @@
+// Navigation Tabs
+
+label {
+	font-weight: 700;
+}
+
+.nav {
+	background-color: $color-level1;
+	font-size: 0;
+	padding: 0;
+
+	.nav-tab {
+		display: inline-block;
+		padding: 10px;
+
+		.nav-tab-block {
+			background-color: transparent;
+			color: $color-text-white;
+			font: bold 14px $font-default;
+			text-decoration: none;
+
+			&:hover {
+				color: $color-text-default;
+			}
+		}
+	}
+
+	.active {
+		background-color:gray ;
+	}
+}
+
+.nav-content {
+	background-color: #d6d6d6;
+	padding: 1em;
+}
