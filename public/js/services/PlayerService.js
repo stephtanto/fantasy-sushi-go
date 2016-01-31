@@ -1,5 +1,4 @@
-angular.module('PlayerService', []).factory('Player', ['$http', function($http) {
-
+angular.module('PlayerService', []).factory('Player', ['$http', function ($http) {
 	return {
         // call to GET all players
 		get : function() {
@@ -25,8 +24,5 @@ angular.module('PlayerService', []).factory('Player', ['$http', function($http) 
         addGame : function(){
             return $http.post('/api/addGame', gameData);
         }
-
-    } 
-	
-
+    }
 }]);
