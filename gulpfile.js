@@ -17,12 +17,15 @@ gulp.task('scss', function () {
 });
 
 // Launches server
-gulp.task('server', function () {
+gulp.task('server', ['scss'], function () {
     server.run(['app.js']);
 
     // Restart the server when file changes
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
-    gulp.watch(['app/sass/**/*.scss'], ['styles:scss']);
+    gulp.watch(['app/sass/**/*.scss'], function (event) {
+        gulp.run('scss');
+        server.notify(event);
+    });
 
     gulp.watch(['app.js', 'app/routes.js'], [server.run]);
 });
