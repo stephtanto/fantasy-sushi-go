@@ -6,9 +6,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'views/home.html',
             controller: 'MainCtrl'
         })
+        .when('/games', {
+            templateUrl: 'views/games.html',
+            controller: 'GamesCtrl'
+        })
         .when('/players', {
             templateUrl: 'views/players.html',
-            controller: 'PlayerCtrl'
+            controller: 'PlayersCtrl'
         })
         .when('/admin', {
             templateUrl: 'views/admin.html',

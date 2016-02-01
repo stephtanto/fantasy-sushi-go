@@ -1,4 +1,4 @@
-app.controller('AdminCtrl', ['$scope', 'PlayerService', function ($scope, PlayerService) {
+app.controller('AdminCtrl', ['$scope', 'PlayersService', function ($scope, PlayersService) {
 
     // File Upload - start
     $scope.data = {};
@@ -47,7 +47,7 @@ app.controller('AdminCtrl', ['$scope', 'PlayerService', function ($scope, Player
         $scope.addPlayerToGame();
         $scope.games = ['Sushi-Go', 'Sabateour'];
 
-        PlayerService.get().then(function (response) {
+        PlayersService.get().then(function (response) {
             $scope.players =  response.data;
         });
 
@@ -62,12 +62,12 @@ app.controller('AdminCtrl', ['$scope', 'PlayerService', function ($scope, Player
             img: $scope.player.img
         };
 
-        PlayerService.create(data).then(function () {
+        PlayersService.create(data).then(function () {
             // Re-init values
             $scope.player.name = '';
             $scope.player.img = '';
 
-            PlayerService.get().then(function (response) {
+            PlayersService.get().then(function (response) {
                 $scope.players = response.data;
             });
         });
@@ -81,21 +81,21 @@ app.controller('AdminCtrl', ['$scope', 'PlayerService', function ($scope, Player
     };
 
     $scope.modifyPlayer = function () {
-        PlayerService.modify($scope.player._id, $scope.player).then(function () {
+        PlayersService.modify($scope.player._id, $scope.player).then(function () {
             $scope.player._id = '';
             $scope.player.name = '';
             $scope.player.img = '';
             $scope.formType = 'add';
 
-            PlayerService.get().then(function(response){
+            PlayersService.get().then(function(response){
                 $scope.players = response.data;
             });
         });
     };
 
     $scope.deletePlayer = function (data) {
-        PlayerService.delete(data._id).then(function () {
-            PlayerService.get().then(function (response) {
+        PlayersService.delete(data._id).then(function () {
+            PlayersService.get().then(function (response) {
                 $scope.players = response.data;
             });
         });
@@ -120,12 +120,12 @@ app.controller('AdminCtrl', ['$scope', 'PlayerService', function ($scope, Player
             players: $scope.game.players
         };
 
-        PlayerService.addGame(data).then(function () {
+        PlayersService.addGame(data).then(function () {
             // Re-init values
             $scope.player.name = '';
             $scope.player.game = '';
             $scope.player.game = [];
-            PlayerService.get().then(function(response){
+            PlayersService.get().then(function(response){
                 $scope.players = response.data;
             });
         });

@@ -1,4 +1,4 @@
-app.factory('PlayerService', ['$http', function ($http) {
+app.factory('PlayersService', ['$http', function ($http) {
 	return {
         // GET all players
 		get : function () {

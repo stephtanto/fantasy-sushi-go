@@ -1,8 +1,9 @@
-var Player = require('./models/player');
+var Game   = require('./models/Game'),
+    Player = require('./models/Player');
 
 module.exports = function (app) {
 
-    // server routes ===========================================================
+    // API routes ===========================================================
 
     app.post('/api/addPlayer', function (req, res) {
         var newPlayer = new Player({
@@ -57,6 +58,16 @@ module.exports = function (app) {
 
                 res.json({ message: 'Player updated!' });
             });
+        });
+    });
+
+    app.get('/api/getGames', function (req, res) {
+        Game.find(function (err, games) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(games);
         });
     });
 

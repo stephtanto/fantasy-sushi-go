@@ -7,6 +7,10 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
                 title: 'Home'
             },
             {
+                path: 'games',
+                title: 'Games'
+            },
+            {
                 path: 'players',
                 title: 'Players'
             },
