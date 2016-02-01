@@ -24,5 +24,5 @@ app.factory('PlayersService', ['$http', function ($http) {
         addGame : function () {
             return $http.post('/api/addGame', gameData);
         }
-    }
+    };
 }]);

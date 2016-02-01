@@ -1,9 +1,15 @@
-var Game   = require('./models/Game'),
-    Player = require('./models/Player');
+var Player = require('../models/Player');
 
 module.exports = function (app) {
+    app.get('/api/getPlayers', function (req, res) {
+        Player.find(function (err, players) {
+            if (err) {
+                res.send(err);
+            }
 
-    // API routes ===========================================================
+            res.json(players);
+        });
+    });
 
     app.post('/api/addPlayer', function (req, res) {
         var newPlayer = new Player({
@@ -17,16 +23,6 @@ module.exports = function (app) {
             }
 
             res.json({ message: 'Successfully added' });
-        });
-    });
-
-    app.get('/api/getPlayers', function (req, res) {
-        Player.find(function (err, players) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json(players);
         });
     });
 
@@ -59,38 +55,5 @@ module.exports = function (app) {
                 res.json({ message: 'Player updated!' });
             });
         });
-    });
-
-    app.get('/api/getGames', function (req, res) {
-        Game.find(function (err, games) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json(games);
-        });
-    });
-
-    app.post('/api/addGame', function (req, res) {
-        var newGame = new Game({
-            name: req.body.name,
-            game: req.body.game,
-            players: req.body.players
-        });
-
-        newGame.save(function (err) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json({ message: 'Successfully added game' });
-        });
-    });
-
-
-    // Frontend routes =========================================================
-
-    app.get('/*', function (req, res) {
-        res.sendfile('./public/index.html');
     });
 };

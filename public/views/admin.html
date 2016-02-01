@@ -1,7 +1,116 @@
 <div class="panel">
-    <h2 class="panel__title">Add Players</h2>
+    <h2 class="panel__title">Add Stats</h2>
 
     <div class="panel__body">
+        <form>
+            <div class="form__group">
+                <label for="statGame">Game</label>
+                <select class="form__control" id="statGame" ng-model="stat.game">
+                    <option ng-repeat="game in games | orderBy: 'name'" value="{{game.name}}">{{game.name}}</option>
+                </select>
+            </div>
+
+            <div class="form__group">
+                <table class="table table--striped">
+                    <thead>
+                        <tr>
+                            <th>Player name</th>
+                            <th>Points</th>
+                            <th>Ranking</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="player in stat.players">
+                            <td>
+                                <select class="form__control" ng-model="player.name">
+                                    <option ng-repeat="p in players | orderBy: 'name'" value="{{p.name}}">{{p.name}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" class="form__control" placeholder="Points" ng-model="player.points">
+                            </td>
+                            <td>
+                                <input type="number" class="form__control" placeholder="Ranking" ng-model="player.ranking">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn" ng-click="addPlayerToStat()">Add</button>
+            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="">Submit</button>
+            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="">Modify</button>
+        </form>
+    </div>
+</div>
+
+<div class="panel">
+    <h2 class="panel__title">Games</h2>
+    <div class="panel__body">
+        <table class="table table--striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Modify/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in games | orderBy: 'name'">
+                    <td>
+                        {{game.name}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn--small" ng-click="modifyGame(game)">Edit</button>
+                        <button type="button" class="btn btn--small" ng-click="deleteGame(game)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Add Game</h3>
+
+        <form>
+            <div class="form__group">
+                <label for="name">Name</label>
+                <input type="text" class="form__control" id="name" ng-model="game.name">
+            </div>
+
+            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addGame()">Submit</button>
+            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyGame()">Modify</button>
+        </form>
+    </div>
+</div>
+
+<div class="panel">
+    <h2 class="panel__title">Players</h2>
+    <div class="panel__body">
+        <table class="table table--striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Picture</th>
+                    <th>Modify/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in players | orderBy: 'name'">
+                    <td>
+                        {{player.name}}
+                    </td>
+                    <td>
+                        <!-- <img style='display:block; width:100px;height:100px;' id='base64image' src="{{player.img}}"> -->
+                    </td>
+                    <td>
+                        <!-- <button type="button" class="btn btn--small" ng-click="addStats(player)">Player Statitics</button> -->
+                        <button type="button" class="btn btn--small" ng-click="modifyPlayer(player)">Edit</button>
+                        <button type="button" class="btn btn--small" ng-click="deletePlayer(player)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Add Player</h3>
+
         <form>
             <div class="form__group">
                 <label for="name">Name</label>
@@ -16,91 +125,5 @@
             <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addPlayer()">Submit</button>
             <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyPlayer()">Modify</button>
         </form>
-    </div>
-</div>
-
-<div class="panel">
-    <h2 class="panel__title">Add Game</h2>
-
-    <div class="panel__body">
-        <form>
-            <div class="form__group">
-                <label for="gameName">Name</label>
-                <input type="text" class="form__control" id="gameName" ng-model="game.name">
-            </div>
-
-            <div class="form__group">
-                <label for="game">Game</label>
-                <select class="form__control" id="game" ng-model="game.game">
-                    <option ng-repeat="game in games" value="{{game}}">{{game}}</option>
-                </select>
-            </div>
-
-            <div class="form__group">
-                <h3>Player Information</h3>
-
-                <button type="button" class="btn btn--small" ng-click="addPlayerToGame()">Add</button>
-
-                <table class="table table--striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Points</th>
-                            <th>Ranking</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="gplayer in game.players">
-                            <td>
-                                <select class="form__control" ng-model="gplayer.name">
-                                    <option ng-repeat="p in players" value="{{p.name}}">{{p.name}}</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" class="form__control" placeholder="Points" ng-model="gplayer.points">
-                            </td>
-                            <td>
-                                <input type="number" class="form__control" placeholder="Ranking" ng-model="gplayer.ranking">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="">Submit</button>
-            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="">Modify</button>
-        </form>
-    </div>
-</div>
-
-
-<div class="panel">
-    <h2 class="panel__title">Current Players</h2>
-
-    <div class="panel__body">
-        <table class="table table--striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Picture</th>
-                    <th>Modify/Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="player in players | orderBy:'name'">
-                    <td>
-                        {{player.name}}
-                    </td>
-                    <td>
-                        <!-- <img style='display:block; width:100px;height:100px;' id='base64image' src="{{player.img}}"> -->
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn--small" ng-click="addStats(player)">Player Statitics</button>
-                        <button type="button" class="btn btn--small" ng-click="modifyPlayer(player)">Edit</button>
-                        <button type="button" class="btn btn--small" ng-click="deletePlayer(player)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

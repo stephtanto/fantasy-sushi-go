@@ -7,6 +7,7 @@ var app = module.exports.app = exports.app = express();
 
 
 // Configuration ===========================================
+
 var port = process.env.PORT || 8080;
 mongoose.connect(process.env.SUSHIDB);
 
@@ -26,9 +27,11 @@ app.use(express.static(__dirname + '/public'));
 
 
 // Routes ==================================================
-require('./app/routes')(app); // Pass our application into our routes
+
+require('./app/routes')(app);
 
 
 // Start app ===============================================
+
 app.listen(port);
 console.log('Server started on port', port);

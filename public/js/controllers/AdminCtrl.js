@@ -1,4 +1,4 @@
-app.controller('AdminCtrl', ['$scope', 'PlayersService', function ($scope, PlayersService) {
+app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', function ($scope, GamesService, PlayersService) {
 
     // File Upload - start
     $scope.data = {};
@@ -32,26 +32,44 @@ app.controller('AdminCtrl', ['$scope', 'PlayersService', function ($scope, Playe
     // File Upload - end
 
     function init () {
+        $scope.game = {
+            name: ''
+        };
+
         $scope.player = {
             _id: '',
             name: '',
             img: ''
         };
 
-        $scope.game = {
-            name: '',
+        $scope.stat = {
             game: '',
             players: []
         };
 
-        $scope.addPlayerToGame();
-        $scope.games = ['Sushi-Go', 'Sabateour'];
+        GamesService.get().then(function (response) {
+            $scope.games = response.data;
+        });
 
         PlayersService.get().then(function (response) {
-            $scope.players =  response.data;
+            $scope.players = response.data;
         });
 
         $scope.formType = 'add';
+    };
+
+    $scope.addGame = function () {
+        var data = {
+            name: $scope.game.name
+        };
+
+        GamesService.create(data).then(function () {
+            $scope.game.name = '';
+
+            GamesService.get().then(function (response) {
+                $scope.games = response.data;
+            });
+        });
     };
 
     $scope.addPlayer = function () {
@@ -71,13 +89,6 @@ app.controller('AdminCtrl', ['$scope', 'PlayersService', function ($scope, Playe
                 $scope.players = response.data;
             });
         });
-    };
-
-    $scope.edit = function (data) {
-        $scope.player._id = data._id;
-        $scope.player.name = data.name;
-        $scope.player.img = data.img;
-        $scope.formType = 'edit';
     };
 
     $scope.modifyPlayer = function () {
@@ -101,34 +112,30 @@ app.controller('AdminCtrl', ['$scope', 'PlayersService', function ($scope, Playe
         });
     };
 
-    $scope.addPlayerToGame = function () {
+    $scope.addPlayerToStat = function () {
         var tempPlayer = {
             id: '',
             points: 0,
             ranking: 0
         };
 
-        $scope.game.players.push(tempPlayer);
+        $scope.stat.players.push(tempPlayer);
     };
 
-    $scope.addGame = function () {
-        $scope.player.img = $scope.data.b64;
-
+    $scope.addStat = function () {
         var data = {
-            name: $scope.game.name,
             game: $scope.game.game,
             players: $scope.game.players
         };
 
-        PlayersService.addGame(data).then(function () {
-            // Re-init values
-            $scope.player.name = '';
-            $scope.player.game = '';
-            $scope.player.game = [];
-            PlayersService.get().then(function(response){
-                $scope.players = response.data;
-            });
-        });
+        // StatsService.create(data).then(function () {
+        //     // Re-init values
+        //     $scope.player.game = '';
+        //     $scope.player.game = [];
+        //     PlayersService.get().then(function(response){
+        //         $scope.players = response.data;
+        //     });
+        // });
     };
 
     init();
