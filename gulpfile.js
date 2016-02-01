@@ -12,7 +12,7 @@ var gulp   = require('gulp'),
 // Process SCSS files
 gulp.task('scss', function () {
     return gulp.src(['app/sass/**/*.scss'])
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(gulp.dest('public/css/'));
 });
 
