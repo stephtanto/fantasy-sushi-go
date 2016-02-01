@@ -1,4 +1,4 @@
-# Fantasy Sushi Go
+# Fantasy Board Games
 
 *Info coming soon*
 
