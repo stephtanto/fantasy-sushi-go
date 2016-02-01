@@ -1,0 +1,27 @@
+@function tint($color, $percentage) {
+    @return mix(#fff, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(#000, $color, $percentage);
+}
+
+@mixin breakpoint ($breakpoint) {
+    $raw-query: map-get($breakpoints, $breakpoint);
+
+    @if $raw-query {
+        $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+        @media #{$query} {
+            @content;
+        }
+    } @else {
+        @error 'No value found for `#{$breakpoint}`.';
+    }
+}
+
+@mixin hidpi {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dppx) {
+        @content;
+    }
+}
