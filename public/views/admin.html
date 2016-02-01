@@ -1,5 +1,5 @@
 <div class="panel">
-    <h2 class="panel__title">Add Stats</h2>
+    <h2 class="panel__title">Add Game Stats</h2>
 
     <div class="panel__body">
         <form>
@@ -60,7 +60,7 @@
                         {{game.name}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn--small" ng-click="modifyGame(game)">Edit</button>
+                        <button type="button" class="btn btn--small" ng-click="editGame(game)">Edit</button>
                         <button type="button" class="btn btn--small" ng-click="deleteGame(game)">Delete</button>
                     </td>
                 </tr>
@@ -102,7 +102,7 @@
                     </td>
                     <td>
                         <!-- <button type="button" class="btn btn--small" ng-click="addStats(player)">Player Statitics</button> -->
-                        <button type="button" class="btn btn--small" ng-click="modifyPlayer(player)">Edit</button>
+                        <button type="button" class="btn btn--small" ng-click="editPlayer(player)">Edit</button>
                         <button type="button" class="btn btn--small" ng-click="deletePlayer(player)">Delete</button>
                     </td>
                 </tr>

@@ -33,6 +33,7 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
 
     function init () {
         $scope.game = {
+            _id: '',
             name: ''
         };
 
@@ -72,6 +73,31 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
         });
     };
 
+    $scope.editGame = function (game) {
+        $scope.formType = 'edit';
+        $scope.game = game;
+    };
+
+    $scope.modifyGame = function () {
+        GamesService.modify($scope.game._id, $scope.game).then(function () {
+            $scope.game._id = '';
+            $scope.game.name = '';
+            $scope.formType = 'add';
+
+            GamesService.get().then(function (response) {
+                $scope.games = response.data;
+            });
+        });
+    };
+
+    $scope.deleteGame = function (data) {
+        GamesService.delete(data._id).then(function () {
+            GamesService.get().then(function (response) {
+                $scope.games = response.data;
+            });
+        });
+    };
+
     $scope.addPlayer = function () {
         $scope.player.img = $scope.data.b64;
 
@@ -91,6 +117,11 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
         });
     };
 
+    $scope.editPlayer = function (player) {
+        $scope.formType = 'edit';
+        $scope.player = player;
+    };
+
     $scope.modifyPlayer = function () {
         PlayersService.modify($scope.player._id, $scope.player).then(function () {
             $scope.player._id = '';
@@ -98,7 +129,7 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
             $scope.player.img = '';
             $scope.formType = 'add';
 
-            PlayersService.get().then(function(response){
+            PlayersService.get().then(function (response) {
                 $scope.players = response.data;
             });
         });
