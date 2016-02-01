@@ -1,0 +1,18 @@
+.panel {
+    border: 1px solid $color-grey;
+    border-radius: $radius;
+
+    + .panel {
+        margin-top: 1em;
+    }
+}
+
+.panel__title {
+    background: $color-grey;
+    font-weight: 300;
+    padding: 0.25rem 1rem;
+}
+
+.panel__body {
+    padding: 1rem;
+}

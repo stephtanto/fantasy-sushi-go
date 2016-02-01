@@ -12,9 +12,9 @@
 </head>
 <body ng-app="app" ng-controller="MainCtrl">
     <header class="header">
-        <div class="container">
-            <h1 class="header__title">Fantasy Sushi Go</h1>
-            <nav class="header__nav">
+        <div class="container grid__row grid__row--middle">
+            <h1 class="grid__col header__title">Fantasy Sushi Go</h1>
+            <nav class="grid__col header__nav">
                 <a ng-repeat="tab in nav.tabs"
                     class="header__nav__item" ng-class="{ 'header__nav__item--active': nav.active === $index }"
                     href="/{{tab.path}}" ng-click="changeTab($index)">
@@ -24,7 +24,9 @@
         </div>
     </header>
 
-    <div class="container" ng-view></div>
+    <main class="content">
+        <div class="container" ng-view></div>
+    </main>
 
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>

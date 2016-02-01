@@ -25,6 +25,11 @@
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
+
+    @include breakpoint(mobile) {
+        flex-basis: 100%;
+        max-width: none;
+    }
 }
 
 @for $i from 1 through 12 {
@@ -33,7 +38,7 @@
         flex-basis: 100% / (12 / $i);
         max-width: 100% / (12 / $i);
 
-        @include breakpoint(small) {
+        @include breakpoint(mobile) {
             flex-basis: 100%;
             max-width: none;
         }

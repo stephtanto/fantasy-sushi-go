@@ -1,0 +1,34 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+        border: 1px solid $color-grey;
+        padding: 0.25em 0.5em;
+    }
+
+    thead,
+    tfoot {
+        background: $color-grey;
+        text-align: left;
+    }
+
+    thead {
+        border-bottom: 2px solid $color-grey;
+    }
+
+    tfoot {
+        border-top: 2px solid $color-grey;
+    }
+}
+
+.table--striped {
+    tr:nth-child(even) {
+        background: $color-grey;
+    }
+}
+
+.table--fixed {
+    table-layout: fixed;
+}
