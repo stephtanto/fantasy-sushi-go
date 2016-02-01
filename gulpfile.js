@@ -23,6 +23,7 @@ gulp.task('server', ['scss'], function () {
     // Restart the server when file changes
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
     gulp.watch(['app/sass/**/*.scss'], function (event) {
+        console.log('Regenerating styles...')
         gulp.run('scss');
         server.notify(event);
     });

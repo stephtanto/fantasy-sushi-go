@@ -1,19 +1,27 @@
-angular.module('MainCtrl', []).controller('MainController', function ($scope) {
-
-    $scope.tagline = 'To the moon and back!';
+app.controller('MainCtrl', ['$scope', function ($scope) {
 
     function init () {
         $scope.nav = {
             tabs: [
-            {path:"",value:"Home"},
-            {path:"players",value:"Players"},
-            {path:"admin",value:"Admin"}
+                {
+                    path: '',
+                    value: 'Home'
+                },
+                {
+                    path: 'players',
+                    value: 'Players'
+                },
+                {
+                    path: 'admin',
+                    value: 'Admin'
+                }
             ],
             active: 0
         };
+
         var pathname = window.location.pathname.slice(1);
-        for(var i = 0; i < $scope.nav.tabs.length; i++){
-            if (pathname == $scope.nav.tabs[i].path){
+        for (var i = 0; i < $scope.nav.tabs.length; i++) {
+            if (pathname == $scope.nav.tabs[i].path) {
                 $scope.nav.active = i;
                 return;
             }
@@ -26,4 +34,4 @@ angular.module('MainCtrl', []).controller('MainController', function ($scope) {
         $scope.nav.active = index;
     };
 
-});
+}]);
