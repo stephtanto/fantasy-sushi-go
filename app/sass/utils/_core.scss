@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    color: $color-black;
+    font: 400 16px/1.5 $fonts;
+}
+
+::selection {
+    background-color: $color-teal;
+    color: $color-white;
+}

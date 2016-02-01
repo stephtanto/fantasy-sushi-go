@@ -1,6 +1,9 @@
 @import 'vendor/normalize';
 
 @import 'utils/variables';
+@import 'utils/core';
+
+@import 'layout/layout';
+@import 'layout/header';
 
 @import 'components/form';
-@import 'components/nav';

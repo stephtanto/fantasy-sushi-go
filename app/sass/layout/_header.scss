@@ -1,0 +1,36 @@
+.header {
+    background: $color-grey;
+    padding: 1em 0;
+
+    .container {
+        display: table;
+        width: 100%;
+    }
+}
+
+.header__title,
+.header__nav {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header__title {
+    font-weight: 300;
+}
+
+.header__nav {
+    font-weight: 700;
+    text-align: right;
+}
+
+    .header__nav__item {
+        color: $color-teal;
+        margin: 0 1em;
+        padding: 1em 0;
+        text-decoration: none;
+    }
+
+    .header__nav__item:hover,
+    .header__nav__item--active {
+        border-bottom: 3px solid $color-teal;
+    }

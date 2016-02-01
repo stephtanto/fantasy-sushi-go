@@ -1,6 +1,4 @@
-<div class="jumbotron text-center">
-    <h1>Players</h1>
-</div>
+<h1>Players</h1>
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -10,7 +8,7 @@
         <div class="row">
             <div class="col-xs-3" ng-repeat="player in players">
                 <div class="thumbnail format">
-                    <img class="photo" src="{{player.img}}" alt="Player Profile Image">
+                    <img ng-if="player.img" class="photo" src="{{player.img}}" alt="Player Profile Image">
                     <div class="playerName">
                         <h3>{{player.name}}</h3>
                     </div>
