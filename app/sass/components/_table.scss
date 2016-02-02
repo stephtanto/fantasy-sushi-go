@@ -4,28 +4,28 @@
 
     th,
     td {
-        border: 1px solid $color-grey;
+        border: 1px solid $color-grey-400;
         padding: 0.25em 0.5em;
     }
 
     thead,
     tfoot {
-        background: $color-grey;
+        background: $color-grey-200;
         text-align: left;
     }
 
     thead {
-        border-bottom: 2px solid $color-grey;
+        border-bottom: 2px solid $color-grey-400;
     }
 
     tfoot {
-        border-top: 2px solid $color-grey;
+        border-top: 2px solid $color-grey-400;
     }
 }
 
 .table--striped {
     tr:nth-child(even) {
-        background: $color-grey;
+        background: $color-grey-100;
     }
 }
 

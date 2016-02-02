@@ -1,15 +1,8 @@
 <h2>Top Players</h2>
 
-<div class="grid__row">
-    <div class="grid__col" ng-repeat="player in players">
-        <div class="card">
-            <div ng-if="player.img" class="card__image">
-                <img class="card__image__img" src="{{player.img}}" alt="Player profile picture">
-            </div>
-
-            <div class="card__text">
-                <h3>{{$index + 1}}. {{player.name}}</h3>
-            </div>
-        </div>
+<div class="card" ng-repeat="player in players">
+    <div ng-if="player.img" class="card__image" style="background-image: url('{{player.img}}')"></div>
+    <div class="card__text">
+        <h3>{{$index + 1}}. {{player.name}}</h3>
     </div>
 </div>

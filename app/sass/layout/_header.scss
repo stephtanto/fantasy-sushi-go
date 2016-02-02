@@ -1,5 +1,5 @@
 .header {
-    background: $color-grey;
+    background: $color-grey-100;
 
     @include breakpoint(mobile) {
         text-align: center;
