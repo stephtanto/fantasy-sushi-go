@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp   = require('gulp'),
+    nano   = require('gulp-cssnano'),
     sass   = require('gulp-sass'),
     server = require('gulp-express');
 
@@ -12,7 +13,8 @@ var gulp   = require('gulp'),
 // Process SCSS files
 gulp.task('scss', function () {
     return gulp.src(['app/sass/**/*.scss'])
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(nano())
         .pipe(gulp.dest('public/css/'));
 });
 
