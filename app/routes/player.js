@@ -1,7 +1,7 @@
 var Player = require('../models/Player');
 
 module.exports = function (app) {
-    app.get('/api/getPlayers', function (req, res) {
+    app.get('/api/players', function (req, res) {
         Player.find(function (err, players) {
             if (err) {
                 res.send(err);
@@ -11,7 +11,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/api/addPlayer', function (req, res) {
+    app.post('/api/players', function (req, res) {
         var newPlayer = new Player({
             name: req.body.name,
             img: req.body.img
@@ -26,7 +26,7 @@ module.exports = function (app) {
         });
     });
 
-    app.delete('/api/deletePlayer/:id', function (req, res) {
+    app.delete('/api/players/:id', function (req, res) {
         Player.remove({
             _id: req.params.id
         }, function (err, player) {
@@ -38,7 +38,7 @@ module.exports = function (app) {
         });
     });
 
-    app.put('/api/modifyPlayer/:id', function (req, res) {
+    app.put('/api/players/:id', function (req, res) {
         Player.findById(req.params.id, function (err, player) {
             if (err) {
                 res.send(err);
