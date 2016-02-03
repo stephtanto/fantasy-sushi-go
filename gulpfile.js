@@ -24,8 +24,8 @@ gulp.task('server', ['scss'], function () {
 
     // Restart the server when file changes
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
-    gulp.watch(['app/sass/**/*.scss'], function (event) {
-        gulp.run('scss');
+    var scssWatcher = gulp.watch(['app/sass/**/*.scss'], ['scss']);
+    scssWatcher.on('change', function (event) {
         server.notify(event);
     });
 
