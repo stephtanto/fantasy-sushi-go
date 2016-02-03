@@ -28,36 +28,35 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
 
         r.readAsDataURL(f); //once defined all callbacks, begin reading the file
     };
-
     // File Upload - end
 
-    function init () {
-        $scope.game = {
-            _id: '',
-            name: ''
-        };
-
-        $scope.player = {
-            _id: '',
-            name: '',
-            img: ''
-        };
-
-        $scope.stat = {
-            game: '',
-            players: []
-        };
-
-        GamesService.get().then(function (response) {
-            $scope.games = response.data;
-        });
-
-        PlayersService.get().then(function (response) {
-            $scope.players = response.data;
-        });
-
-        $scope.formType = 'add';
+    // Init - start
+    $scope.game = {
+        _id: '',
+        name: ''
     };
+
+    $scope.player = {
+        _id: '',
+        name: '',
+        img: ''
+    };
+
+    $scope.stat = {
+        game: '',
+        players: []
+    };
+
+    GamesService.get().then(function (response) {
+        $scope.games = response.data;
+    });
+
+    PlayersService.get().then(function (response) {
+        $scope.players = response.data;
+    });
+
+    $scope.formType = 'add';
+    // Init - end
 
     $scope.addGame = function () {
         var data = {
@@ -168,6 +167,4 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', functio
         //     });
         // });
     };
-
-    init();
 }]);

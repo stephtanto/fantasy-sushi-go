@@ -26,7 +26,7 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
         $scope.nav.active = index;
     };
 
-    (function init () {
+    (function () {
         var pathname = window.location.pathname.slice(1);
         for (var i = 0, len = $scope.nav.tabs.length; i < len; i++) {
             if (pathname === $scope.nav.tabs[i].path) {
