@@ -88,7 +88,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Picture</th>
+                    <th>Photo</th>
                     <th>Modify/Delete</th>
                 </tr>
             </thead>
@@ -98,7 +98,7 @@
                         {{player.name}}
                     </td>
                     <td>
-                        <!-- <img style='display:block; width:100px;height:100px;' id='base64image' src="{{player.img}}"> -->
+                        <img class="img--small" src="{{player.img}}" alt="">
                     </td>
                     <td>
                         <!-- <button type="button" class="btn btn--small" ng-click="addStats(player)">Player Statitics</button> -->
@@ -118,8 +118,8 @@
             </div>
 
             <div class="form__group">
-                <label for="picture">Upload Picture</label>
-                <button ng-click="click()" class="btn" id="picture">Choose File</button>
+                <label for="picture">Upload photo</label>
+                <button ng-click="click()" class="btn" id="picture">Choose file</button>
             </div>
 
             <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addPlayer()">Submit</button>
