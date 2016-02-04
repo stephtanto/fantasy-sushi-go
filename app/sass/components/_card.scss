@@ -1,11 +1,14 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .card {
     border-radius: $radius;
     box-shadow: 0 0.1rem 0.35rem $color-grey-200;
-    display: inline-block;
+    flex: 0 1 12em;
     margin: 0.5em;
     position: relative;
-    vertical-align: top;
-    width: 12em;
 
     &::after {
         box-shadow: 0 0.15rem 0.5rem $color-grey-400;
