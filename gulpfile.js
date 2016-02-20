@@ -14,7 +14,11 @@ var gulp   = require('gulp'),
 gulp.task('scss', function () {
     return gulp.src(['app/sass/**/*.scss'])
         .pipe(sass().on('error', sass.logError))
-        .pipe(nano())
+        .pipe(nano({
+            discardComments: {
+                removeAll: true
+            }
+        }))
         .pipe(gulp.dest('public/css/'));
 });
 
