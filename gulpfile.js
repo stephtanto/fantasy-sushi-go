@@ -23,7 +23,7 @@ gulp.task('scss', function () {
 });
 
 // Launches server
-gulp.task('server', ['scss'], function () {
+gulp.task('serve', ['scss'], function () {
     server.run(['app.js']);
 
     // Restart the server when file changes
