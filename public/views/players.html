@@ -2,7 +2,7 @@
 
 <div class="cards">
     <div class="card" ng-repeat="player in players">
-        <div ng-if="player.img" class="card__image" style="background-image: url('{{player.img}}')"></div>
+        <img ng-if="player.img" class="card__image" src="{{player.img}}" alt="Photo of {{player.name}}">
         <div class="card__text">
             <h3>{{$index + 1}}. {{player.name}}</h3>
         </div>

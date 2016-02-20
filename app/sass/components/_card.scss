@@ -29,12 +29,11 @@
 
 .card__image {
     background-color: $color-grey-500;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
     border-radius: $radius $radius 0 0;
     height: 10em;
+    object-fit: cover;
     text-align: center;
+    width: 100%;
 }
 
 .card__text {
