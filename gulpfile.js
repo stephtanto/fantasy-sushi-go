@@ -32,7 +32,7 @@ gulp.task('scss', function () {
 gulp.task('build', ['scss']);
 
 // Starts Express server and watches for file changes
-gulp.task('watch', ['build', 'serve'], function () {
+gulp.task('watch', ['build'], function () {
     server.run(['app.js']);
 
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
