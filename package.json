@@ -10,18 +10,20 @@
   "license": "MIT",
   "private": true,
   "main": "app.js",
-  "dependencies": {
-    "express": "~4.13.4",
-    "mongoose": "~3.8.0",
-    "body-parser": "~1.15.0",
-    "method-override": "~2.3.5"
+  "scripts": {
+    "start": "node app",
+    "prestart": "gulp build"
   },
-  "devDependencies": {
+  "dependencies": {
     "angular-base64-upload": "^0.1.17",
+    "body-parser": "~1.15.0",
     "connect-livereload": "^0.5.4",
+    "express": "~4.13.4",
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.1",
     "gulp-express": "^0.3.5",
-    "gulp-sass": "^2.2.0"
+    "gulp-sass": "^2.2.0",
+    "method-override": "~2.3.5",
+    "mongoose": "~3.8.0"
   }
 }

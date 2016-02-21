@@ -27,15 +27,13 @@ gulp.task('scss', function () {
         .pipe(gulp.dest('public/css/'));
 });
 
+// Compiles everything
 gulp.task('build', ['scss']);
 
-// Starts Express server
-gulp.task('serve', ['build'], function () {
-    server.run(['app.js']);
-});
-
-// Launches server and watches for file changes
+// Starts Express server and watches for file changes
 gulp.task('watch', ['build', 'serve'], function () {
+    server.run(['app.js']);
+
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
     var scssWatcher = gulp.watch(['app/sass/**/*.scss'], ['scss']);
     scssWatcher.on('change', function (event) {
