@@ -1,6 +1,7 @@
 'use strict';
 
-var gulp   = require('gulp'),
+var del    = require('del'),
+    gulp   = require('gulp'),
     nano   = require('gulp-cssnano'),
     sass   = require('gulp-sass'),
     server = require('gulp-express');
@@ -10,10 +11,10 @@ var gulp   = require('gulp'),
 // Task configuration                                                         //
 ////////////////////////////////////////////////////////////////////////////////
 
-// TODO: clean task
-// https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
-gulp.task('clean', function () {
-
+// Removes previously compiled files
+gulp.task('clean', function (done) {
+    del.sync(['public/css/**']);
+    done();
 });
 
 // Process SCSS files
@@ -29,7 +30,7 @@ gulp.task('scss', function () {
 });
 
 // Compiles everything
-gulp.task('build', ['scss']);
+gulp.task('build', ['clean', 'scss']);
 
 // Starts Express server and watches for file changes
 gulp.task('watch', ['build'], function () {
