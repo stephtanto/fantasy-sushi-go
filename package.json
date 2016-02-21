@@ -12,11 +12,13 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "prestart": "gulp build"
   },
   "dependencies": {
     "angular-base64-upload": "^0.1.17",
     "body-parser": "~1.15.0",
+    "bower": "^1.7.7",
     "connect-livereload": "^0.5.4",
     "express": "~4.13.4",
     "gulp": "^3.9.1",

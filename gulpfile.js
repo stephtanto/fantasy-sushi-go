@@ -11,6 +11,7 @@ var gulp   = require('gulp'),
 ////////////////////////////////////////////////////////////////////////////////
 
 // TODO: clean task
+// https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
 gulp.task('clean', function () {
 
 });
