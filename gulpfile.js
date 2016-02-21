@@ -10,6 +10,11 @@ var gulp   = require('gulp'),
 // Task configuration                                                         //
 ////////////////////////////////////////////////////////////////////////////////
 
+// TODO: clean task
+gulp.task('clean', function () {
+
+});
+
 // Process SCSS files
 gulp.task('scss', function () {
     return gulp.src(['app/sass/**/*.scss'])
@@ -22,11 +27,15 @@ gulp.task('scss', function () {
         .pipe(gulp.dest('public/css/'));
 });
 
-// Launches server
-gulp.task('serve', ['scss'], function () {
-    server.run(['app.js']);
+gulp.task('build', ['scss']);
 
-    // Restart the server when file changes
+// Starts Express server
+gulp.task('serve', ['build'], function () {
+    server.run(['app.js']);
+});
+
+// Launches server and watches for file changes
+gulp.task('watch', ['build', 'serve'], function () {
     gulp.watch(['app/**/*', 'public/**/*'], server.notify);
     var scssWatcher = gulp.watch(['app/sass/**/*.scss'], ['scss']);
     scssWatcher.on('change', function (event) {
