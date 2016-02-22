@@ -18,6 +18,13 @@ gulp.task('clean', function (done) {
   done();
 });
 
+// Run JSCS on all JS code
+gulp.task('lint:js', function () {
+  return gulp.src(['app/**/*.js', 'public/js/**/*.js'])
+    .pipe(jscs())
+    .pipe(jscs.reporter());
+});
+
 // Process SCSS files
 gulp.task('scss', function () {
   return gulp.src(['app/styles/**/*.scss'])
@@ -28,13 +35,6 @@ gulp.task('scss', function () {
       }
     }))
     .pipe(gulp.dest('public/css/'));
-});
-
-// Run JSCS on all JS code
-gulp.task('lint:js', function () {
-  return gulp.src(['app/**/*.js', 'public/js/**/*.js'])
-    .pipe(jscs())
-    .pipe(jscs.reporter());
 });
 
 // Lints and compiles everything
