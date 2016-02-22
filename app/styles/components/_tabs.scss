@@ -1,17 +1,26 @@
 .tabs__items {
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: 1em;
 }
 
   .tabs__items__item {
+    background: $color-grey-100;
     cursor: pointer;
     flex: 1 0 auto;
     list-style: none;
-    padding: 1em 0;
+    max-width: 100%;
+    padding: 1em;
+
+    + .tabs__items__item {
+      border-left: 1px solid $color-grey-200;
+    }
   }
 
     .tabs__items__item--active {
+      border-bottom: 3px solid $color-teal;
       color: $color-teal;
+      font-weight: 700;
     }
 
 .tabs__tab {
