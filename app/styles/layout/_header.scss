@@ -1,17 +1,37 @@
 .header {
   background: $color-grey-100;
+  margin-bottom: 5em;
 
   @include breakpoint(mobile) {
     text-align: center;
+  }
+
+  .grid__row {
+    min-height: 6em;
   }
 }
 
 .header__title {
   font-weight: 300;
+  margin: 0.5rem 0;
+  position: absolute;
+
+  @include breakpoint(mobile) {
+    position: static;
+    text-align: center;
+  }
 
   a {
-    color: $color-black;
+    background: url('/img/logo.svg') no-repeat center center / contain;
+    display: block;
+    font-size: 0;
+    height: 9rem;
     text-decoration: none;
+    width: 9rem;
+
+    @include breakpoint(mobile) {
+      display: inline-block;
+    }
   }
 }
 
