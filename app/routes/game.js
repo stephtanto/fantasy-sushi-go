@@ -1,58 +1,58 @@
 var Game = require('../models/Game');
 
 module.exports = function (app) {
-    app.get('/api/games', function (req, res) {
-        Game.find(function (err, games) {
-            if (err) {
-                res.send(err);
-            }
+  app.get('/api/games', function (req, res) {
+    Game.find(function (err, games) {
+      if (err) {
+        res.send(err);
+      }
 
-            res.json(games);
-        });
+      res.json(games);
+    });
+  });
+
+  app.post('/api/games', function (req, res) {
+    var newGame = new Game({
+      name: req.body.name,
+      gameId: req.body.gameId
     });
 
-    app.post('/api/games', function (req, res) {
-        var newGame = new Game({
-            name: req.body.name,
-            gameId: req.body.gameId
-        });
+    newGame.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
 
-        newGame.save(function (err) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json({ message: 'Successfully added game' });
-        });
+      res.json({ message: 'Successfully added game' });
     });
+  });
 
-    app.delete('/api/games/:id', function (req, res) {
-        Game.remove({
-            _id: req.params.id
-        }, function (err, game) {
-            if (err) {
-                res.send(err);
-            }
+  app.delete('/api/games/:id', function (req, res) {
+    Game.remove({
+      _id: req.params.id
+    }, function (err, game) {
+      if (err) {
+        res.send(err);
+      }
 
-            res.json({ message: 'Successfully deleted' });
-        });
+      res.json({ message: 'Successfully deleted' });
     });
+  });
 
-    app.put('/api/games/:id', function (req, res) {
-        Game.findById(req.params.id, function (err, game) {
-            if (err) {
-                res.send(err);
-            }
+  app.put('/api/games/:id', function (req, res) {
+    Game.findById(req.params.id, function (err, game) {
+      if (err) {
+        res.send(err);
+      }
 
-            game.name = req.body.name;
+      game.name = req.body.name;
 
-            game.save(function (err) {
-                if (err) {
-                    res.send(err);
-                }
+      game.save(function (err) {
+        if (err) {
+          res.send(err);
+        }
 
-                res.json({ message: 'Game updated!' });
-            });
-        });
+        res.json({ message: 'Game updated!' });
+      });
     });
+  });
 };

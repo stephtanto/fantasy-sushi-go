@@ -1,60 +1,60 @@
 var Player = require('../models/Player');
 
 module.exports = function (app) {
-    app.get('/api/players', function (req, res) {
-        Player.find(function (err, players) {
-            if (err) {
-                res.send(err);
-            }
+  app.get('/api/players', function (req, res) {
+    Player.find(function (err, players) {
+      if (err) {
+        res.send(err);
+      }
 
-            res.json(players);
-        });
+      res.json(players);
+    });
+  });
+
+  app.post('/api/players', function (req, res) {
+    var newPlayer = new Player({
+      playerId: req.body.playerId,
+      name: req.body.name,
+      img: req.body.img
     });
 
-    app.post('/api/players', function (req, res) {
-        var newPlayer = new Player({
-            playerId: req.body.playerId,
-            name: req.body.name,
-            img: req.body.img
-        });
+    newPlayer.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
 
-        newPlayer.save(function (err) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json({ message: 'Successfully added' });
-        });
+      res.json({ message: 'Successfully added' });
     });
+  });
 
-    app.delete('/api/players/:id', function (req, res) {
-        Player.remove({
-            _id: req.params.id
-        }, function (err, player) {
-            if (err) {
-                res.send(err);
-            }
+  app.delete('/api/players/:id', function (req, res) {
+    Player.remove({
+      _id: req.params.id
+    }, function (err, player) {
+      if (err) {
+        res.send(err);
+      }
 
-            res.json({ message: 'Successfully deleted' });
-        });
+      res.json({ message: 'Successfully deleted' });
     });
+  });
 
-    app.put('/api/players/:id', function (req, res) {
-        Player.findById(req.params.id, function (err, player) {
-            if (err) {
-                res.send(err);
-            }
+  app.put('/api/players/:id', function (req, res) {
+    Player.findById(req.params.id, function (err, player) {
+      if (err) {
+        res.send(err);
+      }
 
-            player.name = req.body.name;
-            player.img = req.body.img;
+      player.name = req.body.name;
+      player.img = req.body.img;
 
-            player.save(function (err) {
-                if (err) {
-                    res.send(err);
-                }
+      player.save(function (err) {
+        if (err) {
+          res.send(err);
+        }
 
-                res.json({ message: 'Player updated!' });
-            });
-        });
+        res.json({ message: 'Player updated!' });
+      });
     });
+  });
 };
