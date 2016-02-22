@@ -12,9 +12,8 @@ var port = process.env.PORT || 8080;
 mongoose.connect(process.env.SUSHIDB);
 
 // Get all data/stuff of the body (POST) parameters
-app.use(bodyParser.json()); // parse application/json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json({ limit: '1mb' }));
+app.use(bodyParser.urlencoded({ limit: '1mb', extended: true })); // Parse application/x-www-form-urlencoded
 
 // For livereload
 app.use(require('connect-livereload')());
