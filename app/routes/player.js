@@ -13,6 +13,7 @@ module.exports = function (app) {
 
     app.post('/api/players', function (req, res) {
         var newPlayer = new Player({
+            playerId: req.body.playerId,
             name: req.body.name,
             img: req.body.img
         });
