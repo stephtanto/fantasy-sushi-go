@@ -13,7 +13,8 @@ module.exports = function (app) {
 
     app.post('/api/games', function (req, res) {
         var newGame = new Game({
-            name: req.body.name
+            name: req.body.name,
+            gameId: req.body.gameId
         });
 
         newGame.save(function (err) {

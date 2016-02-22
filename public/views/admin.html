@@ -1,15 +1,49 @@
 <div class="panel">
-    <h2 class="panel__title">Add Game Stats</h2>
+    <h2 class="panel__title">Matches</h2>
 
     <div class="panel__body">
+        <table class="table table--striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Modify/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="match in matchs | orderBy: 'name'">
+                    <td>
+                        {{match.name}}
+                    </td>
+                    <td>
+                        {{match.date | date: 'fullDate'}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn--small" ng-click="editMatch(match)">Edit</button>
+                        <button type="button" class="btn btn--small" ng-click="deleteMatch(match)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <h3>Add Game Statistics</h3>
+
         <form>
+            <div class="form__group">
+                <label for="statName">Match Name</label>
+                <input type="text" id="statName" ng-model="stat.name">
+            </div>
             <div class="form__group">
                 <label for="statGame">Game</label>
                 <select class="form__control" id="statGame" ng-model="stat.game">
-                    <option ng-repeat="game in games | orderBy: 'name'" value="{{game.name}}">{{game.name}}</option>
+                    <option ng-repeat="game in games | orderBy: 'name'" value="{{game.gameId}}">{{game.name}}</option>
                 </select>
             </div>
-
+            <div class="form__group">
+                <label for="statDate">Date</label>
+                <input type="date" id="statDate" ng-model="stat.date">
+            </div>
             <div class="form__group">
                 <table class="table table--striped">
                     <thead>
@@ -17,13 +51,14 @@
                             <th>Player name</th>
                             <th>Points</th>
                             <th>Ranking</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="player in stat.players">
                             <td>
-                                <select class="form__control" ng-model="player.name">
-                                    <option ng-repeat="p in players | orderBy: 'name'" value="{{p.name}}">{{p.name}}</option>
+                                <select class="form__control" ng-model="player.playerId">
+                                    <option ng-repeat="p in players | orderBy: 'name'" value="{{p.playerId}}">{{p.name}}</option>
                                 </select>
                             </td>
                             <td>
@@ -32,14 +67,17 @@
                             <td>
                                 <input type="number" class="form__control" placeholder="Ranking" ng-model="player.ranking">
                             </td>
+                            <td>
+                                <button type="button" class="btn btn--small" ng-click="deleteStatPlayer(player)">Delete</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <button class="btn" ng-click="addPlayerToStat()">Add</button>
-            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="">Submit</button>
-            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="">Modify</button>
+            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addMatch()">Submit</button>
+            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyMatch()">Modify</button>
         </form>
     </div>
 </div>
