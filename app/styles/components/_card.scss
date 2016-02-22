@@ -1,41 +1,41 @@
 .cards {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-    border-radius: $radius;
-    box-shadow: 0 0.1rem 0.35rem $color-grey-200;
-    flex: 0 1 12em;
-    margin: 0.5em;
-    position: relative;
+  border-radius: $radius;
+  box-shadow: 0 0.1rem 0.35rem $color-grey-200;
+  flex: 0 1 12em;
+  margin: 0.5em;
+  position: relative;
 
-    &::after {
-        box-shadow: 0 0.15rem 0.5rem $color-grey-400;
-        content: '';
-        height: 100%;
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        transition: opacity 0.25s;
-        width: 100%;
-    }
+  &::after {
+    box-shadow: 0 0.15rem 0.5rem $color-grey-400;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.25s;
+    width: 100%;
+  }
 
-    &:hover::after {
-        opacity: 1;
-    }
+  &:hover::after {
+    opacity: 1;
+  }
 }
 
 .card__image {
-    background-color: $color-grey-500;
-    border-radius: $radius $radius 0 0;
-    height: 10em;
-    object-fit: cover;
-    text-align: center;
-    width: 100%;
+  background-color: $color-grey-500;
+  border-radius: $radius $radius 0 0;
+  height: 10em;
+  object-fit: cover;
+  text-align: center;
+  width: 100%;
 }
 
 .card__text {
-    padding: 1em;
+  padding: 1em;
 }

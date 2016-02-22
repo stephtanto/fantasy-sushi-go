@@ -1,6 +1,20 @@
 app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', 'MatchesService', 'StatsService',
   function ($scope, GamesService, PlayersService, MatchesService, StatsService) {
-  // >> File Upload - start
+
+  // #region Tabs
+
+  $scope.tabs = {
+    items: ['Matches', 'Games', 'Players'],
+    active: 0
+  };
+
+  $scope.changeTab = function (index) {
+    $scope.tabs.active = index;
+  };
+
+  // #endregion Tabs
+
+  // #region File Upload
   $scope.data = {};
 
   // TODO: just use a file input in the HTML
@@ -33,9 +47,9 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', 'Matche
     r.readAsDataURL(f); //once defined all callbacks, begin reading the file
   };
 
-  // >> File Upload - end
+  // #endregion File Upload
 
-  // >> Init - start
+  // #region Init
 
   $scope.game = {
     _id: '',
@@ -75,7 +89,7 @@ app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', 'Matche
 
   $scope.formType = 'add';
 
-  // >> Init - end
+  // #endregion Init
 
   // Helper Function: used to get next Id, for iterating db
   function getId(array, id) {

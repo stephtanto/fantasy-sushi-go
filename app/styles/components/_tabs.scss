@@ -1,0 +1,23 @@
+.tabs__items {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+  .tabs__items__item {
+    cursor: pointer;
+    flex: 1 0 auto;
+    list-style: none;
+    padding: 1em 0;
+  }
+
+    .tabs__items__item--active {
+      color: $color-teal;
+    }
+
+.tabs__tab {
+  display: none;
+}
+
+  .tabs__tab--active {
+    display: block;
+  }

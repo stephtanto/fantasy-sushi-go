@@ -1,19 +1,19 @@
 .panel {
-    border: 1px solid $color-grey-400;
-    border-radius: $radius;
+  border: 1px solid $color-grey-400;
+  border-radius: $radius;
 
-    + .panel {
-        margin-top: 1em;
-    }
+  + .panel {
+    margin-top: 1em;
+  }
 }
 
 .panel__title {
-    background: $color-grey-100;
-    border-radius: $radius $radius 0 0;
-    font-weight: 300;
-    padding: 0.25rem 1rem;
+  background: $color-grey-100;
+  border-radius: $radius $radius 0 0;
+  font-weight: 300;
+  padding: 0.25rem 1rem;
 }
 
 .panel__body {
-    padding: 1rem;
+  padding: 1rem;
 }
