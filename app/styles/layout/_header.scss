@@ -1,13 +1,21 @@
 .header {
-  background: $color-grey-100;
-  margin-bottom: 5em;
+  background: $color-red;
+  position: relative;
 
   @include breakpoint(mobile) {
     text-align: center;
   }
 
-  .grid__row {
-    min-height: 6em;
+  &::after {
+    border-color: $color-red transparent transparent transparent;
+    border-style: solid;
+    border-width: 2em 100vw 0 0;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+    z-index: -1;
   }
 }
 
@@ -16,7 +24,7 @@
   text-transform: uppercase;
 
   a {
-    color: $color-teal;
+    color: $color-white-pure;
     text-decoration: none;
   }
 }
@@ -31,7 +39,7 @@
 }
 
   .header__nav__item {
-    color: $color-black;
+    color: $color-grey-100;
     display: inline-block;
     margin: 0 1em;
     padding: 1em 0;
@@ -40,6 +48,5 @@
 
   .header__nav__item:hover,
   .header__nav__item--active {
-    border-bottom: 3px solid $color-teal;
-    color: $color-teal;
+    color: $color-white-pure;
   }

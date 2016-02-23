@@ -11,13 +11,24 @@ body {
 }
 
 body {
+  background-color: $color-white;
   color: $color-black;
   font: 400 16px/1.5 $fonts;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background-color: $color-teal;
+  background-color: $color-red;
   color: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fonts-logo;
 }
 
 hr {
