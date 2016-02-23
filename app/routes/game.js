@@ -11,6 +11,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/api/games/:id', function (req, res) {
+    Game.find({gameId : req.params.id}, function (err, games) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json(games[0]);
+    });
+  });
+
   app.post('/api/games', function (req, res) {
     var newGame = new Game({
       name: req.body.name,

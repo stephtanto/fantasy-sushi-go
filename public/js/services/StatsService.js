@@ -1,8 +1,13 @@
 app.factory('StatsService', ['$http', function ($http) {
   return {
-    // GET all games
+    // GET all stats
     get: function () {
       return $http.get('/api/stats');
+    },
+
+    // GET one stat given playerId
+    getPlayerStats: function (playerId) {
+      return $http.get('/api/stats/' + playerId);
     },
 
     // POST and create a new stat

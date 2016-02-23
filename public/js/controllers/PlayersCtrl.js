@@ -1,5 +1,5 @@
-app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', function
-  ($scope, PlayersService, StatsService) {
+app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', '$location', function
+  ($scope, PlayersService, StatsService, $location) {
 
   var calculateStats = function (players, stats) {
     for (p in players) {
@@ -74,4 +74,11 @@ app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', funct
       $scope.playerProfiles = playerStats;
     });
   });
+
+  $scope.playerInfo = function (playerId) {
+    $location.path("/players/" + playerId);
+
+  };
+
+
 }]);

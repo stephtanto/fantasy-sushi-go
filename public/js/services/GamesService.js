@@ -5,6 +5,11 @@ app.factory('GamesService', ['$http', function ($http) {
       return $http.get('/api/games');
     },
 
+    // GET one game given gameId
+    getGame: function (gameId) {
+      return $http.get('/api/games/' + gameId);
+    },
+
     // POST and create a new game
     create: function (gameData) {
       return $http.post('/api/games', gameData);

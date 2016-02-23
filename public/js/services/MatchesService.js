@@ -5,6 +5,11 @@ app.factory('MatchesService', ['$http', function ($http) {
       return $http.get('/api/match');
     },
 
+    // GET one stat given playerId
+    getMatch: function (matchId) {
+      return $http.get('/api/match/' + matchId);
+    },
+
     // POST and create a new match
     create: function (matchData) {
       return $http.post('/api/match', matchData);

@@ -11,6 +11,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get('/api/match/:id', function (req, res) {
+    Match.find({matchId : req.params.id}, function (err, matches) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json(matches[0]);
+    });
+  });
+
   app.post('/api/match', function (req, res) {
     var newMatch = new Match({
       name: req.body.name,

@@ -14,6 +14,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
       templateUrl: 'views/players.html',
       controller: 'PlayersCtrl'
     })
+    .when('/players/:id', {
+      templateUrl: 'views/playerDetails.html',
+      controller: 'PlayerDetailsCtrl'
+    })
     .when('/admin', {
       templateUrl: 'views/admin.html',
       controller: 'AdminCtrl'

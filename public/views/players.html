@@ -1,7 +1,7 @@
 <h2>All Players</h2>
 
 <div class="cards">
-  <div class="card" ng-repeat="player in playerProfiles">
+  <div class="card" ng-repeat="player in playerProfiles" ng-click="playerInfo(player.playerId)">
     <img ng-if="player.img" class="card__image" src="{{player.img}}" alt="Photo of {{player.name}}">
     <div class="card__text">
       <h3>{{$index + 1}}. {{player.name}}</h3>
