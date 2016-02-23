@@ -1,14 +1,15 @@
-app.controller('PlayerDetailsCtrl', ['$scope', 'StatsService', '$routeParams', 'MatchesService', 'GamesService', 'PlayersService',
-  function ($scope, StatsService, $routeParams, MatchesService, GamesService,PlayersService) {
+app.controller('PlayerDetailsCtrl', ['$scope', '$routeParams',
+  'StatsService', 'MatchesService', 'GamesService', 'PlayersService',
+  function ($scope, $routeParams, StatsService, MatchesService, GamesService, PlayersService) {
 
     StatsService.get().then(function (response) {
       $scope.stats = response.data;
     });
 
     var playerId = $routeParams.id;
+
     PlayersService.getPlayer(playerId).then(function (response) {
-      $scope.player = response.data.name;
-      console.log('player name',$scope.player);
+      $scope.player = response.data;
     });
 
     $scope.statInformation = [];
@@ -21,8 +22,6 @@ app.controller('PlayerDetailsCtrl', ['$scope', 'StatsService', '$routeParams', '
         MatchesService.getMatch(stats[s].matchId).then(function (response) {
           var match = response.data;
 
-          // console.log('match', match);
-
           GamesService.getGame(match.gameId).then(function (response) {
             var temp = {
               stat: stats[s],
@@ -31,8 +30,6 @@ app.controller('PlayerDetailsCtrl', ['$scope', 'StatsService', '$routeParams', '
             };
 
             $scope.statInformation.push(temp);
-
-            // console.log('statInformation', $scope.statInformation);
           });
         });
       }

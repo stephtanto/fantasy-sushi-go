@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.get('/api/players/:id', function (req, res) {
-    Player.find({playerId : req.params.id}, function (err, players) {
+    Player.find({ playerId: req.params.id }, function (err, players) {
       if (err) {
         res.send(err);
       }
