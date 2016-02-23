@@ -1,10 +1,24 @@
-.container {
-  margin: 0 auto;
-  max-width: 60em;
-  padding: 0 1em;
-  width: 100%;
+body {
+  display: flex;
+  flex-flow: column;
 }
 
 .content {
-  padding: 1em 0;
+  flex-grow: 1;
+  padding: 1rem 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.page_title {
+  background-color: $color-red;
+  color: $color-white-pure;
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35em 0.5em;
 }
