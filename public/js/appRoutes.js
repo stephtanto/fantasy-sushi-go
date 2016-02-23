@@ -19,3 +19,16 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
       controller: 'AdminCtrl'
     });
 }]);
+
+app.run(['$rootScope', 'ngProgressFactory', function ($rootScope, ngProgressFactory) {
+  $rootScope.progressbar = ngProgressFactory.createInstance();
+  $rootScope.progressbar.setColor('#fff');
+
+  $rootScope.$on('$routeChangeStart', function () {
+    $rootScope.progressbar.start();
+  });
+
+  $rootScope.$on('$routeChangeSuccess', function () {
+    $rootScope.progressbar.complete();
+  });
+}]);
