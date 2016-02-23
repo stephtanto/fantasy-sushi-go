@@ -5,6 +5,11 @@ app.factory('PlayersService', ['$http', function ($http) {
       return $http.get('/api/players');
     },
 
+    // GET one stat given playerId
+    getPlayer: function (playerId) {
+      return $http.get('/api/players/' + playerId);
+    },
+
     // POST and create a new player
     create: function (playerData) {
       return $http.post('/api/players', playerData);
