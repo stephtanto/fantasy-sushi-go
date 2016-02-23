@@ -20,7 +20,7 @@ gulp.task('clean', function (done) {
 
 // Run JSCS on all JS code
 gulp.task('lint:js', function () {
-  return gulp.src(['app/**/*.js', 'public/js/**/*.js'])
+  return gulp.src(['{app,public/js}/**/*.js'])
     .pipe(jscs())
     .pipe(jscs.reporter());
 });
@@ -45,10 +45,13 @@ gulp.task('watch', ['build'], function () {
   server.run(['app.js']);
 
   gulp.watch(['{app,public}/**/*'], server.notify);
+
   var scssWatcher = gulp.watch(['app/styles/**/*.scss'], ['scss']);
   scssWatcher.on('change', function (event) {
     server.notify(event);
   });
+
+  gulp.watch(['{app,public/js}/**/*.js'], ['lint:js']);
 
   gulp.watch(['app.js', 'app/routes.js'], [server.run]);
 });
