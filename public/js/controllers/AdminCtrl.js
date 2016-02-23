@@ -1,5 +1,5 @@
-app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', 'MatchesService', 'StatsService',
-  function ($scope, GamesService, PlayersService, MatchesService, StatsService) {
+app.controller('AdminCtrl', ['$scope', 'GamesService', 'PlayersService', 'MatchesService', 'StatsService', function
+  ($scope, GamesService, PlayersService, MatchesService, StatsService) {
 
   // #region Tabs
 
