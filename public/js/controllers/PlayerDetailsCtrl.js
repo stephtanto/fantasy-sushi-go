@@ -1,11 +1,15 @@
-app.controller('PlayerDetailsCtrl', ['$scope', 'StatsService', '$routeParams', 'MatchesService', 'GamesService',
-  function ($scope, StatsService, $routeParams, MatchesService, GamesService) {
+app.controller('PlayerDetailsCtrl', ['$scope', 'StatsService', '$routeParams', 'MatchesService', 'GamesService', 'PlayersService',
+  function ($scope, StatsService, $routeParams, MatchesService, GamesService,PlayersService) {
 
     StatsService.get().then(function (response) {
       $scope.stats = response.data;
     });
 
     var playerId = $routeParams.id;
+    PlayersService.getPlayer(playerId).then(function (response) {
+      $scope.player = response.data.name;
+      console.log('player name',$scope.player);
+    });
 
     $scope.statInformation = [];
 
