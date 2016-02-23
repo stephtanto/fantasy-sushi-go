@@ -1,5 +1,6 @@
 .home__hero {
   background: url('/img/hero.jpg') no-repeat bottom center / cover;
+  border: 0.35em solid $color-red;
   color: $color-white;
   height: 15em;
   margin-bottom: 7em;

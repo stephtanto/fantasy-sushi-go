@@ -14,3 +14,11 @@ body {
   padding: 0 1rem;
   width: 100%;
 }
+
+.page_title {
+  background-color: $color-red;
+  color: $color-white-pure;
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35em 0.5em;
+}
