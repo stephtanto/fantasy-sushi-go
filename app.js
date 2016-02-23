@@ -15,8 +15,10 @@ mongoose.connect(process.env.SUSHIDB);
 app.use(bodyParser.json({ limit: '1mb' }));
 app.use(bodyParser.urlencoded({ limit: '1mb', extended: true })); // Parse application/x-www-form-urlencoded
 
-// For livereload
-app.use(require('connect-livereload')());
+if (process.env.NODE_ENV === 'development') {
+    // For livereload
+    app.use(require('connect-livereload')());
+}
 
 // Override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
