@@ -74,8 +74,4 @@ app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', '$loc
         $scope.playerProfiles = playerStats;
       });
     });
-
-    $scope.playerInfo = function (playerId) {
-      $location.path('/players/' + playerId);
-    };
   }]);

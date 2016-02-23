@@ -7,9 +7,11 @@
   background-color: $color-white-pure;
   border-radius: $radius;
   box-shadow: 0 0.1rem 0.35rem $color-grey-200;
+  color: $color-black;
   flex: 0 1 12em;
   margin: 0.5em;
   position: relative;
+  text-decoration: none;
 
   &::after {
     box-shadow: 0 0.15rem 0.5rem $color-grey-400;
