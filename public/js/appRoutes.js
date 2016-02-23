@@ -15,7 +15,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
       controller: 'PlayersCtrl'
     })
     .when('/players/:id', {
-      templateUrl: 'views/playerDetails.html',
+      templateUrl: 'views/playerdetails.html',
       controller: 'PlayerDetailsCtrl'
     })
     .when('/admin', {

@@ -1,7 +1,18 @@
-<table>
-	<tr ng-repeat="s in statInformation">
-		<td>{{s.match.name}}</td>
-		<td>{{s.game.name}}</td>
-		<td>{{s.stat.points}}</td>
-	</tr>
+<h2 class="page_title">Player stats: </h2>
+
+<table class="table table--striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Game</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="stat in statInformation">
+      <td>{{stat.match.name}}</td>
+      <td>{{stat.game.name}}</td>
+      <td>{{stat.stat.points}}</td>
+    </tr>
+  </tbody>
 </table>

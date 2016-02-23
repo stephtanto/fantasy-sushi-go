@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.get('/api/match/:id', function (req, res) {
-    Match.find({matchId : req.params.id}, function (err, matches) {
+    Match.find({ matchId: req.params.id }, function (err, matches) {
       if (err) {
         res.send(err);
       }

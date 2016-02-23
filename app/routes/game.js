@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.get('/api/games/:id', function (req, res) {
-    Game.find({gameId : req.params.id}, function (err, games) {
+    Game.find({ gameId: req.params.id }, function (err, games) {
       if (err) {
         res.send(err);
       }

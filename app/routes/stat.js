@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.get('/api/stats/:id', function (req, res) {
-    Stat.find({playerId : req.params.id}, function (err, stats) {
+    Stat.find({ playerId: req.params.id }, function (err, stats) {
       if (err) {
         res.send(err);
       }
