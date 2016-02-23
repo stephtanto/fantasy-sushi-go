@@ -23,13 +23,11 @@
   <header class="header">
     <div class="container grid__row grid__row--middle">
       <h1 class="grid__col header__title">
-        <a href="/" ng-click="changeTab(0)">Fantasy Board Games</a>
+        <a href="/">Fantasy Board Games</a>
       </h1>
 
-      <nav class="grid__col header__nav">
-        <a ng-repeat="tab in nav.tabs"
-          class="header__nav__item" ng-class="{ 'header__nav__item--active': nav.active === $index }"
-          href="/{{tab.path}}" ng-click="changeTab($index)">
+      <nav class="grid__col header__nav" auto-nav-active>
+        <a ng-repeat="tab in nav" class="header__nav__item" href="/{{tab.path}}">
           {{tab.title}}
         </a>
       </nav>
@@ -42,7 +40,8 @@
 
   <footer class="footer">
     <div class="container">
-      <p><a href="https://github.com/stephtanto/fantasy-sushi-go">Code on GitHub</a></p>
+      <a href="https://github.com/stephtanto/fantasy-sushi-go">Code on GitHub</a>
+      <a href="/admin">Admin panel</a>
     </div>
   </footer>
 

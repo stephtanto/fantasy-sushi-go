@@ -23,5 +23,9 @@
   a {
     color: $color-white;
     text-decoration: none;
+
+    + a {
+      margin-left: 1em;
+    }
   }
 }
