@@ -1,7 +1,7 @@
-var bodyParser     = require('body-parser'),
-    express        = require('express'),
-    methodOverride = require('method-override'),
-    mongoose       = require('mongoose');
+var bodyParser   = require('body-parser'),
+  express        = require('express'),
+  methodOverride = require('method-override'),
+  mongoose       = require('mongoose');
 
 var app = module.exports.app = exports.app = express();
 

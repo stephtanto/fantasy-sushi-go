@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', function ($scope, PlayersService, StatsService) {
     function calculateStats (players, stats){
     	for (p in players){
@@ -56,4 +57,10 @@ app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', funct
 	    });
     });
 
+=======
+app.controller('PlayersCtrl', ['$scope', 'PlayersService', function ($scope, PlayersService) {
+  PlayersService.get().then(function (response) {
+    $scope.players = response.data;
+  });
+>>>>>>> b33199b2a98c0ee12ab6dba34343b6128bf6f023
 }]);

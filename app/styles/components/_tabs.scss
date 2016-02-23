@@ -1,0 +1,32 @@
+.tabs__items {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 1em;
+}
+
+  .tabs__items__item {
+    background: $color-grey-100;
+    cursor: pointer;
+    flex: 1 0 auto;
+    list-style: none;
+    max-width: 100%;
+    padding: 1em;
+
+    + .tabs__items__item {
+      border-left: 1px solid $color-grey-200;
+    }
+  }
+
+    .tabs__items__item--active {
+      border-bottom: 3px solid $color-red;
+      color: $color-red;
+      font-weight: 700;
+    }
+
+.tabs__tab {
+  display: none;
+}
+
+  .tabs__tab--active {
+    display: block;
+  }

@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: $color-white;
+  color: $color-black;
+  font: 400 16px/1.5 $fonts;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: $color-red;
+  color: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fonts-logo;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $color-grey-300;
+  margin: 1em 0;
+  height: 1px;
+  width: 100%;
+}

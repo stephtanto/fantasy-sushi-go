@@ -1,0 +1,52 @@
+.header {
+  background: $color-red;
+  position: relative;
+
+  @include breakpoint(mobile) {
+    text-align: center;
+  }
+
+  &::after {
+    border-color: $color-red transparent transparent transparent;
+    border-style: solid;
+    border-width: 2em 100vw 0 0;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+    z-index: -1;
+  }
+}
+
+.header__title {
+  font-family: $fonts-logo;
+  text-transform: uppercase;
+
+  a {
+    color: $color-white-pure;
+    text-decoration: none;
+  }
+}
+
+.header__nav {
+  font-weight: 700;
+  text-align: right;
+
+  @include breakpoint(mobile) {
+    text-align: center;
+  }
+}
+
+  .header__nav__item {
+    color: $color-grey-100;
+    display: inline-block;
+    margin: 0 1em;
+    padding: 1em 0;
+    text-decoration: none;
+  }
+
+  .header__nav__item:hover,
+  .header__nav__item--active {
+    color: $color-white-pure;
+  }

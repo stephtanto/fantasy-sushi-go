@@ -1,0 +1,17 @@
+.form__group {
+  margin: 1em 0;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+}
+
+.form__control {
+  background-color: $color-white-pure;
+  border: 1px solid $color-grey-400;
+  border-radius: $radius;
+  color: $color-black;
+  font: inherit;
+  padding: 0.25em;
+}

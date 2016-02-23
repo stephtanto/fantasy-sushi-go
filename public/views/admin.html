@@ -1,167 +1,183 @@
-<div class="panel">
-    <h2 class="panel__title">Matches</h2>
+<div class="tabs">
+  <ul class="tabs__items">
+    <li ng-repeat="item in tabs.items" ng-click="changeTab($index)"
+      class="tabs__items__item" ng-class="{'tabs__items__item--active': tabs.active === $index}">
+      {{tabs.items[$index]}}
+    </li>
+  </ul>
 
-    <div class="panel__body">
+  <div class="tabs__tab" ng-class="{'tabs__tab--active': tabs.active === 0}">
+    <div class="panel">
+      <h2 class="panel__title">Matches</h2>
+
+      <div class="panel__body">
         <table class="table table--striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Modify/Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="match in matchs | orderBy: 'name'">
-                    <td>
-                        {{match.name}}
-                    </td>
-                    <td>
-                        {{match.date | date: 'fullDate'}}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn--small" ng-click="editMatch(match)">Edit</button>
-                        <button type="button" class="btn btn--small" ng-click="deleteMatch(match)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="match in matchs | orderBy: 'name'">
+              <td>
+                {{match.name}}
+              </td>
+              <td>
+                {{match.date | date: 'fullDate'}}
+              </td>
+              <td>
+                <button type="button" class="btn btn--small" ng-click="editMatch(match)">Edit</button>
+                <button type="button" class="btn btn--small" ng-click="deleteMatch(match)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <hr>
         <h3>Add Game Statistics</h3>
 
         <form>
-            <div class="form__group">
-                <label for="statName">Match Name</label>
-                <input type="text" id="statName" ng-model="stat.name">
-            </div>
-            <div class="form__group">
-                <label for="statGame">Game</label>
-                <select class="form__control" id="statGame" ng-model="stat.game">
-                    <option ng-repeat="game in games | orderBy: 'name'" value="{{game.gameId}}">{{game.name}}</option>
-                </select>
-            </div>
-            <div class="form__group">
-                <label for="statDate">Date</label>
-                <input type="date" id="statDate" ng-model="stat.date">
-            </div>
-            <div class="form__group">
-                <table class="table table--striped">
-                    <thead>
-                        <tr>
-                            <th>Player name</th>
-                            <th>Points</th>
-                            <th>Ranking</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="player in stat.players">
-                            <td>
-                                <select class="form__control" ng-model="player.playerId">
-                                    <option ng-repeat="p in players | orderBy: 'name'" value="{{p.playerId}}">{{p.name}}</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="number" class="form__control" placeholder="Points" ng-model="player.points">
-                            </td>
-                            <td>
-                                <input type="number" class="form__control" placeholder="Ranking" ng-model="player.ranking">
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn--small" ng-click="deleteStatPlayer(player)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <button class="btn" ng-click="addPlayerToStat()">Add</button>
-            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addMatch()">Submit</button>
-            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyMatch()">Modify</button>
-        </form>
-    </div>
-</div>
-
-<div class="panel">
-    <h2 class="panel__title">Games</h2>
-    <div class="panel__body">
-        <table class="table table--striped">
-            <thead>
+          <div class="form__group">
+            <label for="statName">Match Name</label>
+            <input type="text" class="form__control" id="statName" ng-model="stat.name">
+          </div>
+          <div class="form__group">
+            <label for="statGame">Game</label>
+            <select class="form__control" id="statGame" ng-model="stat.game">
+              <option ng-repeat="game in games | orderBy: 'name'" value="{{game.gameId}}">{{game.name}}</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="statDate">Date</label>
+            <input type="date" class="form__control" id="statDate" ng-model="stat.date">
+          </div>
+          <div class="form__group">
+            <table class="table table--striped">
+              <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Modify/Delete</th>
+                  <th>Player name</th>
+                  <th>Points</th>
+                  <th>Ranking</th>
+                  <th>Delete</th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="game in games | orderBy: 'name'">
-                    <td>
-                        {{game.name}}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn--small" ng-click="editGame(game)">Edit</button>
-                        <button type="button" class="btn btn--small" ng-click="deleteGame(game)">Delete</button>
-                    </td>
+              </thead>
+              <tbody>
+                <tr ng-repeat="player in stat.players">
+                  <td>
+                    <select class="form__control" ng-model="player.playerId">
+                      <option ng-repeat="p in players | orderBy: 'name'" value="{{p.playerId}}">{{p.name}}</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="number" class="form__control" placeholder="Points" ng-model="player.points">
+                  </td>
+                  <td>
+                    <input type="number" class="form__control" placeholder="Ranking" ng-model="player.ranking">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn--small" ng-click="deleteStatPlayer(player)">Delete</button>
+                  </td>
                 </tr>
-            </tbody>
+              </tbody>
+            </table>
+          </div>
+
+          <button class="btn" ng-click="addPlayerToStat()">Add</button>
+          <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addMatch()">Submit</button>
+          <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyMatch()">Modify</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs__tab" ng-class="{'tabs__tab--active': tabs.active === 1}">
+    <div class="panel">
+      <h2 class="panel__title">Games</h2>
+      <div class="panel__body">
+        <table class="table table--striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="game in games | orderBy: 'name'">
+              <td>
+                {{game.name}}
+              </td>
+              <td>
+                <button type="button" class="btn btn--small" ng-click="editGame(game)">Edit</button>
+                <button type="button" class="btn btn--small" ng-click="deleteGame(game)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
+        <hr>
         <h3>Add Game</h3>
 
         <form>
-            <div class="form__group">
-                <label for="name">Name</label>
-                <input type="text" class="form__control" id="name" ng-model="game.name">
-            </div>
+          <div class="form__group">
+            <label for="name">Name</label>
+            <input type="text" class="form__control" id="name" ng-model="game.name">
+          </div>
 
-            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addGame()">Submit</button>
-            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyGame()">Modify</button>
+          <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addGame()">Submit</button>
+          <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyGame()">Modify</button>
         </form>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="panel">
-    <h2 class="panel__title">Players</h2>
-    <div class="panel__body">
+  <div class="tabs__tab" ng-class="{'tabs__tab--active': tabs.active === 2}">
+    <div class="panel">
+      <h2 class="panel__title">Players</h2>
+      <div class="panel__body">
         <table class="table table--striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Photo</th>
-                    <th>Modify/Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="player in players | orderBy: 'name'">
-                    <td>
-                        {{player.name}}
-                    </td>
-                    <td>
-                        <img class="img--small" src="{{player.img}}" alt="">
-                    </td>
-                    <td>
-                        <!-- <button type="button" class="btn btn--small" ng-click="addStats(player)">Player Statitics</button> -->
-                        <button type="button" class="btn btn--small" ng-click="editPlayer(player)">Edit</button>
-                        <button type="button" class="btn btn--small" ng-click="deletePlayer(player)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Photo</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="player in players | orderBy: 'name'">
+              <td>
+                {{player.name}}
+              </td>
+              <td>
+                <img class="img--small" src="{{player.img}}" alt="Photo of {{player.name}}">
+              </td>
+              <td>
+                <button type="button" class="btn btn--small" ng-click="editPlayer(player)">Edit</button>
+                <button type="button" class="btn btn--small" ng-click="deletePlayer(player)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
 
+        <hr>
         <h3>Add Player</h3>
 
         <form>
-            <div class="form__group">
-                <label for="name">Name</label>
-                <input type="text" class="form__control" id="name" ng-model="player.name">
-            </div>
+          <div class="form__group">
+            <label for="name">Name</label>
+            <input type="text" class="form__control" id="name" ng-model="player.name">
+          </div>
 
-            <div class="form__group">
-                <label for="picture">Upload photo</label>
-                <button ng-click="click()" class="btn" id="picture">Choose file</button>
-            </div>
+          <div class="form__group">
+            <label for="picture">Upload photo</label>
+            <button ng-click="click()" class="btn" id="picture">Choose file</button>
+          </div>
 
-            <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addPlayer()">Submit</button>
-            <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyPlayer()">Modify</button>
+          <button ng-if="formType == 'add'" type="submit" class="btn" ng-click="addPlayer()">Submit</button>
+          <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyPlayer()">Modify</button>
         </form>
+      </div>
     </div>
+  </div>
 </div>

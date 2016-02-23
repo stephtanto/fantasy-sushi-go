@@ -1,6 +1,7 @@
-<h2>Top Players</h2>
+<h2>All Players</h2>
 
 <div class="cards">
+<<<<<<< HEAD
     <div class="card" ng-repeat="player in playerProfiles">
         <img ng-if="player.img" class="card__image" src="{{player.img}}" alt="Photo of {{player.name}}">
         <div class="card__text">
@@ -8,5 +9,12 @@
             <h4>Win/Loss: {{player.wins}}/{{player.losses}}</h4>
             <h4>Total Points: {{player.points}}</h4>
         </div>
+=======
+  <div class="card" ng-repeat="player in players | orderBy: 'name'">
+    <img ng-if="player.img" class="card__image" src="{{player.img}}" alt="Photo of {{player.name}}">
+    <div class="card__text">
+      <h3>{{player.name}}</h3>
+>>>>>>> b33199b2a98c0ee12ab6dba34343b6128bf6f023
     </div>
+  </div>
 </div>

@@ -1,0 +1,18 @@
+.home__hero {
+  background: url('/img/hero.jpg') no-repeat bottom center / cover;
+  color: $color-white;
+  height: 15em;
+  margin-bottom: 7em;
+  padding: 1em;
+  text-align: center;
+}
+
+  .home__hero__logo {
+    height: 20em;
+  }
+
+.home__section {
+  h1 {
+    text-align: center;
+  }
+}
