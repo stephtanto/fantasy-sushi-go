@@ -12,12 +12,14 @@ module.exports = function (app) {
   });
 
   app.get('/api/games/:id', function (req, res) {
-    Game.find({ gameId: req.params.id }, function (err, games) {
+    Game.findOne({ gameId: req.params.id }, function (err, game) {
       if (err) {
         res.send(err);
       }
 
-      res.json(games[0]);
+      if (game) {
+        res.json(game);
+      }
     });
   });
 
