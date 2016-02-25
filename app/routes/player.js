@@ -2,7 +2,8 @@ var Player = require('../models/Player');
 
 module.exports = function (app) {
   app.get('/api/players', function (req, res) {
-    Player.find(function (err, players) {
+    // TODO: get images too
+    Player.find({}, '-img', function (err, players) {
       if (err) {
         res.send(err);
       }
