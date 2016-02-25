@@ -63,13 +63,13 @@ app.controller('PlayersCtrl', ['$scope', 'PlayersService', 'StatsService', '$loc
         var playerStats = calculateStats(playerArray, $scope.stats);
 
         // Update player profiles
-        for (p1 in $scope.players) {
-          for (p2 in playerStats) {
-            if ($scope.players[p1].playerId === playerStats[p2].playerId) {
-              playerStats[p2].img = $scope.players[p1].img;
-            }
-          }
-        }
+        // for (p1 in $scope.players) {
+        //   for (p2 in playerStats) {
+        //     if ($scope.players[p1].playerId === playerStats[p2].playerId) {
+        //       playerStats[p2].img = $scope.players[p1].img;
+        //     }
+        //   }
+        // }
 
         $scope.playerProfiles = playerStats;
       });
