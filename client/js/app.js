@@ -8,23 +8,23 @@ function config($routeProvider, $locationProvider) {
 
   $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
+      templateUrl: 'partials/home.html',
       controller: 'MainCtrl'
     })
     .when('/games', {
-      templateUrl: 'views/games.html',
+      templateUrl: 'partials/games.html',
       controller: 'GamesCtrl'
     })
     .when('/players', {
-      templateUrl: 'views/players.html',
+      templateUrl: 'partials/players.html',
       controller: 'PlayersCtrl'
     })
     .when('/players/:id', {
-      templateUrl: 'views/playerdetails.html',
+      templateUrl: 'partials/playerdetails.html',
       controller: 'PlayerDetailsCtrl'
     })
     .when('/admin', {
-      templateUrl: 'views/admin.html',
+      templateUrl: 'partials/admin.html',
       controller: 'AdminCtrl'
     });
 }

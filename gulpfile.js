@@ -42,7 +42,7 @@ gulp.task('build', ['clean', 'lint:js', 'scss']);
 
 // Starts Express server and watches for file changes
 gulp.task('watch', ['build'], function () {
-  server.run(['app.js']);
+  server.run(['server.js']);
 
   gulp.watch(['{server,client}/**/*'], server.notify);
 
@@ -53,5 +53,5 @@ gulp.task('watch', ['build'], function () {
 
   gulp.watch(['{server,client/js}/**/*.js'], ['lint:js']);
 
-  gulp.watch(['app.js', 'server/routes.js'], [server.run]);
+  gulp.watch(['server.js', 'server/routes.js'], [server.run]);
 });
