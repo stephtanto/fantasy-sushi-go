@@ -14,5 +14,5 @@ results
 npm-debug.log
 node_modules
 
-public/css
-public/libs
+client/css
+client/libs

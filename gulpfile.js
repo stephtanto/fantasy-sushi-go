@@ -14,27 +14,27 @@ var del  = require('del'),
 
 // Removes previously compiled files
 gulp.task('clean', function (done) {
-  del.sync(['public/css/**']);
+  del.sync(['client/css/**']);
   done();
 });
 
 // Run JSCS on all JS code
 gulp.task('lint:js', function () {
-  return gulp.src(['{app,public/js}/**/*.js'])
+  return gulp.src(['{server,client/js}/**/*.js'])
     .pipe(jscs())
     .pipe(jscs.reporter());
 });
 
 // Process SCSS files
 gulp.task('scss', function () {
-  return gulp.src(['app/styles/**/*.scss'])
+  return gulp.src(['styles/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(nano({
       discardComments: {
         removeAll: true
       }
     }))
-    .pipe(gulp.dest('public/css/'));
+    .pipe(gulp.dest('client/css/'));
 });
 
 // Lints and compiles everything
@@ -44,14 +44,14 @@ gulp.task('build', ['clean', 'lint:js', 'scss']);
 gulp.task('watch', ['build'], function () {
   server.run(['app.js']);
 
-  gulp.watch(['{app,public}/**/*'], server.notify);
+  gulp.watch(['{server,client}/**/*'], server.notify);
 
-  var scssWatcher = gulp.watch(['app/styles/**/*.scss'], ['scss']);
+  var scssWatcher = gulp.watch(['server/styles/**/*.scss'], ['scss']);
   scssWatcher.on('change', function (event) {
     server.notify(event);
   });
 
-  gulp.watch(['{app,public/js}/**/*.js'], ['lint:js']);
+  gulp.watch(['{server,client/js}/**/*.js'], ['lint:js']);
 
-  gulp.watch(['app.js', 'app/routes.js'], [server.run]);
+  gulp.watch(['app.js', 'server/routes.js'], [server.run]);
 });

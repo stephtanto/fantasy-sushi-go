@@ -10,6 +10,6 @@ module.exports = function (app) {
 
   // Frontend routes
   app.get('/*', function (req, res) {
-    res.sendFile('index.html', { root: __dirname + '/../../public/' });
+    res.sendFile('index.html', { root: __dirname + '/../../client/' });
   });
 };
