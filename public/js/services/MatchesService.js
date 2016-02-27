@@ -1,4 +1,8 @@
-app.factory('MatchesService', ['$http', function ($http) {
+angular
+  .module('app')
+  .factory('MatchesService', Service);
+
+function Service($http) {
   return {
     // GET all players
     get: function () {
@@ -25,4 +29,4 @@ app.factory('MatchesService', ['$http', function ($http) {
       return $http.put('/api/match/' + id, matchData);
     }
   };
-}]);
+}

@@ -1,4 +1,8 @@
-app.factory('StatsService', ['$http', function ($http) {
+angular
+  .module('app')
+  .factory('StatsService', Service);
+
+function Service($http) {
   return {
     // GET all stats
     get: function () {
@@ -20,4 +24,4 @@ app.factory('StatsService', ['$http', function ($http) {
       return $http.delete('/api/stats/' + id);
     }
   };
-}]);
+}

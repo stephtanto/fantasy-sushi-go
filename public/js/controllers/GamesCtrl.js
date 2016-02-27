@@ -1,5 +1,9 @@
-app.controller('GamesCtrl', ['$scope', 'GamesService', function ($scope, GamesService) {
+angular
+  .module('app')
+  .controller('GamesCtrl', Controller);
+
+function Controller($scope, GamesService) {
   GamesService.get().then(function (response) {
     $scope.games = response.data;
   });
-}]);
+}

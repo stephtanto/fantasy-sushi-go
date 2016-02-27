@@ -1,4 +1,8 @@
-app.controller('MainCtrl', ['$scope', function ($scope) {
+angular
+  .module('app')
+  .controller('MainCtrl', Controller);
+
+function Controller($scope) {
   $scope.nav = [
     {
       path: '',
@@ -13,9 +17,9 @@ app.controller('MainCtrl', ['$scope', function ($scope) {
       title: 'Players'
     }
   ];
-}]);
+}
 
-app.directive('autoNavActive', ['$location', function ($location) {
+angular.module('app').directive('autoNavActive', function ($location) {
   return {
     restrict: 'A',
     scope: false,
@@ -34,4 +38,4 @@ app.directive('autoNavActive', ['$location', function ($location) {
       scope.$on('$locationChangeSuccess', setActive);
     }
   };
-}]);
+});

@@ -1,4 +1,8 @@
-app.factory('GamesService', ['$http', function ($http) {
+angular
+  .module('app')
+  .factory('GamesService', Service);
+
+function Service($http) {
   return {
     // GET all games
     get: function () {
@@ -25,4 +29,4 @@ app.factory('GamesService', ['$http', function ($http) {
       return $http.put('/api/games/' + id, gameData);
     }
   };
-}]);
+}

@@ -1,8 +1,7 @@
-var app =
-    angular
-        .module('app', ['ngRoute', 'ngProgress'])
-        .config(config)
-        .run(run);
+angular
+  .module('app', ['ngRoute', 'ngProgress'])
+  .config(config)
+  .run(run);
 
 function config($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
