@@ -2,7 +2,8 @@ var Player = require('../models/Player');
 
 module.exports = function (app) {
   app.get('/api/players', function (req, res) {
-    Player.find(function (err, players) {
+    // TODO: get images too
+    Player.find({}, '-img', function (err, players) {
       if (err) {
         res.send(err);
       }
@@ -12,12 +13,14 @@ module.exports = function (app) {
   });
 
   app.get('/api/players/:id', function (req, res) {
-    Player.find({ playerId: req.params.id }, function (err, players) {
+    Player.findOne({ playerId: req.params.id }, function (err, player) {
       if (err) {
         res.send(err);
       }
 
-      res.json(players[0]);
+      if (player) {
+        res.json(player);
+      }
     });
   });
 
