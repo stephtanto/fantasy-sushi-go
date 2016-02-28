@@ -23,17 +23,31 @@ function config($routeProvider, $locationProvider) {
       templateUrl: 'partials/playerdetails.html',
       controller: 'PlayerDetailsCtrl'
     })
+    .when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    })
+    .when('/logout', {
+      controller: 'LogoutCtrl',
+      access: { restricted: true }
+    })
     .when('/admin', {
       templateUrl: 'partials/admin.html',
-      controller: 'AdminCtrl'
-    });
+      controller: 'AdminCtrl',
+      access: { restricted: true }
+    })
+    .otherwise({ redirectTo: '/' });
 }
 
-function run($rootScope, ngProgressFactory) {
+function run($rootScope, $location, ngProgressFactory, AuthService) {
   $rootScope.progressbar = ngProgressFactory.createInstance();
   $rootScope.progressbar.setColor('#fff');
 
-  $rootScope.$on('$routeChangeStart', function () {
+  $rootScope.$on('$routeChangeStart', function (event, next, current) {
+    if (next.access && next.access.restricted && !AuthService.isLoggedIn()) {
+      $location.path('/login');
+    }
+
     $rootScope.progressbar.start();
   });
 

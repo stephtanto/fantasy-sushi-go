@@ -2,7 +2,6 @@
   "name": "fantasy-board-games",
   "version": "1.0.0",
   "dependencies": {
-    "angular-route": "1.4.9",
     "ngprogress": "1.1.2"
   }
 }
