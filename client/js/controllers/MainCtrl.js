@@ -2,7 +2,7 @@ angular
   .module('app')
   .controller('MainCtrl', Controller);
 
-function Controller($scope, AuthService) {
+function Controller($scope) {
   $scope.nav = [
     {
       path: '',
