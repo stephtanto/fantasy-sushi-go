@@ -41,7 +41,8 @@
   <footer class="footer">
     <div class="container">
       <a href="https://github.com/stephtanto/fantasy-sushi-go">Code on GitHub</a>
-      <a href="/admin">Admin panel</a>
+      <a href="/admin">Admin portal</a>
+      <a ng-if="$root.loggedIn" ng-controller="LogoutCtrl" ng-click="logout()">Logout</a>
     </div>
   </footer>
 
@@ -59,10 +60,9 @@
 
   <script src="js/controllers/AdminCtrl.js"></script>
   <script src="js/controllers/GamesCtrl.js"></script>
-  <script src="js/controllers/LoginCtrl.js"></script>
-  <script src="js/controllers/LogoutCtrl.js"></script>
   <script src="js/controllers/MainCtrl.js"></script>
   <script src="js/controllers/PlayerDetailsCtrl.js"></script>
   <script src="js/controllers/PlayersCtrl.js"></script>
+  <script src="js/controllers/UserCtrl.js"></script>
 </body>
 </html>

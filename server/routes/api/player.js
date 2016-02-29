@@ -1,4 +1,4 @@
-var Player = require('../models/Player');
+var Player = require('../../models/Player');
 
 module.exports = function (app) {
   app.get('/api/players', function (req, res) {

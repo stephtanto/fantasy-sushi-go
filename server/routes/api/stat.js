@@ -1,4 +1,4 @@
-var Stat = require('../models/Stat');
+var Stat = require('../../models/Stat');
 
 module.exports = function (app) {
   app.get('/api/stats', function (req, res) {

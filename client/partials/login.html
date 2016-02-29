@@ -1,1 +1,21 @@
 <h2 class="page_title">Login</h2>
+
+<div ng-show="error">{{errorMessage}}</div>
+
+<form class="form" ng-submit="login()">
+  <div class="form__group">
+    <label>Username</label>
+    <input type="text" class="form__control" name="username" ng-model="loginForm.username" required>
+  </div>
+
+  <div class="form__group">
+    <label>Password</label>
+    <input type="password" class="form__control" name="password" ng-model="loginForm.password" required>
+  </div>
+
+  <div>
+    <button type="submit" class="btn" ng-disabled="disabled">Login</button>
+  </div>
+</form>
+
+<a href="/register">Register</a>

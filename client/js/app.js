@@ -31,6 +31,10 @@ function config($routeProvider, $locationProvider) {
       controller: 'LogoutCtrl',
       access: { restricted: true }
     })
+    .when('/register', {
+      templateUrl: 'partials/register.html',
+      controller: 'RegisterCtrl',
+    })
     .when('/admin', {
       templateUrl: 'partials/admin.html',
       controller: 'AdminCtrl',
@@ -39,13 +43,14 @@ function config($routeProvider, $locationProvider) {
     .otherwise({ redirectTo: '/' });
 }
 
-function run($rootScope, $location, ngProgressFactory, AuthService) {
+function run($rootScope, $location, $route, ngProgressFactory, AuthService) {
   $rootScope.progressbar = ngProgressFactory.createInstance();
   $rootScope.progressbar.setColor('#fff');
 
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    if (next.access && next.access.restricted && !AuthService.isLoggedIn()) {
+    if (next.access && next.access.restricted && AuthService.isLoggedIn() === false) {
       $location.path('/login');
+      $route.reload();
     }
 
     $rootScope.progressbar.start();

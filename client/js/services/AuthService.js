@@ -3,10 +3,9 @@ angular
   .factory('AuthService', Service);
 
 function Service($q, $timeout, $http) {
-  // create user variable
   var user = null;
 
-  // return available functions for use in controllers
+  // Return available functions for use in controllers
   return ({
     isLoggedIn: isLoggedIn,
     getUserStatus: getUserStatus,
@@ -16,6 +15,18 @@ function Service($q, $timeout, $http) {
   });
 
   function isLoggedIn() {
+    $http.get('/user/status')
+      .success(function (data) {
+        if (data.status) {
+          user = true;
+        } else {
+          user = false;
+        }
+      })
+      .error(function (data) {
+        user = false;
+      });
+
     if (user) {
       return true;
     } else {
@@ -28,10 +39,8 @@ function Service($q, $timeout, $http) {
   }
 
   function login(username, password) {
-    // create a new instance of deferred
     var deferred = $q.defer();
 
-    // send a post request to the server
     $http.post('/user/login', { username: username, password: password })
       .success(function (data, status) {
         if (status === 200 && data.status) {
@@ -51,10 +60,8 @@ function Service($q, $timeout, $http) {
   }
 
   function logout() {
-    // create a new instance of deferred
     var deferred = $q.defer();
 
-    // send a get request to the server
     $http.get('/user/logout')
       .success(function (data) {
         user = false;
@@ -69,10 +76,8 @@ function Service($q, $timeout, $http) {
   }
 
   function register(username, password) {
-    // create a new instance of deferred
     var deferred = $q.defer();
 
-    // send a post request to the server
     $http.post('/user/register', { username: username, password: password })
       .success(function (data, status) {
         if (status === 200 && data.status) {

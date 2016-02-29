@@ -1,4 +1,4 @@
-var Game = require('../models/Game');
+var Game = require('../../models/Game');
 
 module.exports = function (app) {
   app.get('/api/games', function (req, res) {

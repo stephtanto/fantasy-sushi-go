@@ -1,0 +1,19 @@
+<h2 class="page_title">Register</h2>
+
+<div ng-show="error">{{errorMessage}}</div>
+
+<form ng-submit="register()">
+  <div class="form__group">
+    <label>Username</label>
+    <input type="text" class="form__control" name="username" ng-model="registerForm.username" required>
+  </div>
+
+  <div class="form__group">
+    <label>Password</label>
+    <input type="password" class="form__control" name="password" ng-model="registerForm.password" required>
+  </div>
+
+  <div>
+    <button type="submit" class="btn" ng-disabled="disabled">Register</button>
+  </div>
+</form>

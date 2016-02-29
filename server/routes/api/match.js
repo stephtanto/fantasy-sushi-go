@@ -1,4 +1,4 @@
-var Match = require('../models/Match');
+var Match = require('../../models/Match');
 
 module.exports = function (app) {
   app.get('/api/match', function (req, res) {

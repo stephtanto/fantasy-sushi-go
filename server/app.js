@@ -16,21 +16,25 @@ mongoose.connect(process.env.SUSHIDB);
 
 var app = express();
 
-// Get all data/stuff of the body (POST) parameters
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ limit: '5mb', extended: true })); // Parse application/x-www-form-urlencoded
-app.use(cookieParser());
+// Set the static files location /client/img will be /img for users
+app.use(express.static(path.join(__dirname, '../client')));
 
-if (process.env.NODE_ENV === 'development') {
-  // For livereload
-  app.use(require('connect-livereload')());
-}
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
+app.use(cookieParser());
+app.use(expressSession({
+  secret: process.env.SUSHIDB,
+  resave: false,
+  saveUninitialized: false
+}));
 
 // Override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
 
-// Set the static files location /client/img will be /img for users
-app.use(express.static(__dirname + '/../client'));
+// Livereload in dev environment
+if (process.env.NODE_ENV === 'development') {
+  app.use(require('connect-livereload')());
+}
 
 // User authentication
 // ================================================================================================
@@ -47,20 +51,5 @@ passport.deserializeUser(User.deserializeUser());
 // ================================================================================================
 
 require('./routes')(app);
-
-// Error hndlers
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-app.use(function (err, req, res) {
-  res.status(err.status || 500);
-  res.end(JSON.stringify({
-    message: err.message,
-    error: {}
-  }));
-});
 
 module.exports = app;
