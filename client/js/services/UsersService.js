@@ -4,7 +4,7 @@ angular
 
 function Service($http) {
   return {
-    // GET all games
+    // GET all users
     get: function () {
       return $http.get('/api/users');
     },

@@ -381,9 +381,11 @@ function Controller($scope, GamesService, PlayersService, MatchesService, StatsS
 
   $scope.editUser = function (user) {
     $scope.formType = 'edit';
+
     if (user.admin == null) {
       user.admin = 'false';
-    }    
+    }
+
     $scope.user = user;
   };
 

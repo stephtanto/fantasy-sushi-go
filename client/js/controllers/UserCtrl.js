@@ -11,7 +11,9 @@ function LoginController($rootScope, $scope, $location, AuthService) {
 
     AuthService.login($scope.loginForm.username, $scope.loginForm.password)
       .then(function () {
-        $location.path('/admin');
+        var urlParams = $location.search();
+
+        $location.url(urlParams.redirect ? urlParams.redirect : '/admin');
         $scope.disabled = false;
         $scope.loginForm = {};
         $rootScope.loggedIn = true;

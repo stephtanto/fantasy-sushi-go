@@ -49,7 +49,15 @@ function run($rootScope, $location, $route, ngProgressFactory, AuthService) {
 
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
     if (next.access && next.access.restricted && AuthService.isLoggedIn() === false) {
-      $location.path('/login');
+      var loginPath = '/login';
+
+      var nextPath = $location.url();
+
+      if (nextPath) {
+        loginPath += '?redirect=' + nextPath;
+      }
+
+      $location.url(loginPath);
       $route.reload();
     }
 
