@@ -2,16 +2,17 @@ angular
   .module('app')
   .controller('AdminCtrl', Controller);
 
-function Controller($scope, GamesService, PlayersService, MatchesService, StatsService) {
+function Controller($scope, GamesService, PlayersService, MatchesService, StatsService, UsersService) {
   // #region Tabs
 
   $scope.tabs = {
-    items: ['Matches', 'Games', 'Players'],
+    items: ['Matches', 'Games', 'Players', 'Users'],
     active: 0
   };
 
   $scope.changeTab = function (index) {
     $scope.tabs.active = index;
+    $scope.formType = 'add';
   };
 
   // #endregion Tabs
@@ -65,12 +66,18 @@ function Controller($scope, GamesService, PlayersService, MatchesService, StatsS
   };
 
   $scope.stat = {
+    _id: '',
     name: '',
     game: '',
     date: new Date(),
     players: [],
-    matchId: 0,
-    _id: ''
+    matchId: 0
+  };
+
+  $scope.user = {
+    _id: '',
+    username: '',
+    admin: ''
   };
 
   GamesService.get().then(function (response) {
@@ -87,6 +94,10 @@ function Controller($scope, GamesService, PlayersService, MatchesService, StatsS
 
   StatsService.get().then(function (response) {
     $scope.stats = response.data;
+  });
+
+  UsersService.get().then(function (response) {
+    $scope.users = response.data;
   });
 
   $scope.formType = 'add';
@@ -365,6 +376,27 @@ function Controller($scope, GamesService, PlayersService, MatchesService, StatsS
         players: [],
         matchId: ''
       };
+    });
+  };
+
+  $scope.editUser = function (user) {
+    $scope.formType = 'edit';
+    if (user.admin == null) {
+      user.admin = 'false';
+    }    
+    $scope.user = user;
+  };
+
+  $scope.modifyUser = function () {
+    $scope.formType = 'add';
+    UsersService.modify($scope.user._id, $scope.user).then(function () {
+      $scope.user._id = '';
+      $scope.user.username = '';
+      $scope.user.admin = 'false';
+
+      UsersService.get().then(function (response) {
+        $scope.users = response.data;
+      });
     });
   };
 }

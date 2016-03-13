@@ -182,4 +182,50 @@
       </div>
     </div>
   </div>
+
+  <div class="tabs__tab" ng-class="{'tabs__tab--active': tabs.active === 3}">
+    <div class="panel">
+      <h2 class="panel__title">Users</h2>
+      <div class="panel__body">
+        <table class="table table--striped">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in users | orderBy: 'name'">
+              <td>
+                {{user.username}}
+              </td>
+              <td>
+                <button type="button" class="btn btn--small" ng-click="editUser(user)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr ng-if="formType == 'edit'">
+        <h3 ng-if="formType == 'edit'">Edit Player</h3>
+
+        <form ng-if="formType == 'edit'">
+          <div class="form__group">
+            <label for="name">Username</label>
+            <input type="text" class="form__control" id="name" ng-model="user.username">
+          </div>
+          <div class="form__group">
+            <label for="admin">Admin</label>
+            <select name="admin" ng-model="user.admin">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+          </div>
+
+
+          <button ng-if="formType == 'edit'" type="submit" class="btn" ng-click="modifyUser()">Modify</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

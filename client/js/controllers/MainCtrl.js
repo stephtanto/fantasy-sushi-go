@@ -15,6 +15,10 @@ function Controller($scope) {
     {
       path: 'players',
       title: 'Players'
+    },
+    {
+      path: 'login',
+      title: 'Login'
     }
   ];
 }
